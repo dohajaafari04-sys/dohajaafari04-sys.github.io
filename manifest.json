@@ -1,0 +1,284 @@
+<!DOCTYPE html>
+<html lang="en" translate="no">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="google" content="notranslate">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <!-- SEO : titre, description, auteur, mots-clés -->
+  <title>Doha Jaafari – UI/UX Designer Portfolio</title>
+  <meta name="description" content="Portfolio de Doha Jaafari, UI/UX Designer spécialisée en recherche utilisateur, wireframing et prototypage. Découvrez mes projets et mon parcours.">
+  <meta name="author" content="Doha Jaafari">
+  <meta name="keywords" content="UI/UX Designer, Portfolio, Figma, Recherche utilisateur, Wireframing, Prototypage, Design, Doha Jaafari">
+  <meta name="robots" content="index, follow">
+  <link rel="canonical" href="https://dohajaafari04-sys.github.io/dohajaafari04.github.io/">
+
+  <!-- Open Graph (Facebook / LinkedIn) -->
+  <meta property="og:url" content="https://dohajaafari04-sys.github.io/dohajaafari04.github.io/">
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="Doha Jaafari – UI/UX Designer Portfolio">
+  <meta property="og:description" content="Portfolio de Doha Jaafari, UI/UX Designer spécialisée en recherche utilisateur, wireframing et prototypage.">
+  <meta property="og:image" content="https://dohajaafari04-sys.github.io/dohajaafari04.github.io/assets/heroImage.png">
+  <meta property="og:image:alt" content="Aperçu du portfolio de Doha Jaafari">
+  <meta property="og:locale" content="fr_FR">
+  <meta property="og:site_name" content="Doha Jaafari Portfolio">
+
+  <!-- Twitter / X Card -->
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:site" content="@dohajaafari">
+  <meta name="twitter:creator" content="@dohajaafari">
+  <meta name="twitter:url" content="https://dohajaafari04-sys.github.io/dohajaafari04.github.io/">
+  <meta name="twitter:title" content="Doha Jaafari – UI/UX Designer Portfolio">
+  <meta name="twitter:description" content="Portfolio de Doha Jaafari, UI/UX Designer spécialisée en recherche utilisateur, wireframing et prototypage.">
+  <meta name="twitter:image" content="https://dohajaafari04-sys.github.io/dohajaafari04.github.io/assets/heroImage.png">
+
+  <!-- Favicon pour tous les appareils -->
+  <link rel="icon" type="image/x-icon" href="assets/favicon.ico">
+  <link rel="icon" type="image/png" sizes="32x32" href="assets/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="assets/favicon-16x16.png">
+  <link rel="apple-touch-icon" href="assets/icon-192.png">
+
+  <!-- PWA : Manifest + theme -->
+  <link rel="manifest" href="manifest.json">
+  <meta name="theme-color" content="#000000">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-title" content="Doha Portfolio">
+
+  <!-- CSS -->
+  <link rel="stylesheet" href="style.css">
+
+  <!-- Analytics : Plausible (respect RGPD, sans cookies) -->
+  <script defer data-domain="dohajaafari04-sys.github.io" src="https://plausible.io/js/script.js"></script>
+
+  <!-- Données structurées JSON-LD -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Person",
+    "name": "Doha Jaafari",
+    "jobTitle": "UI/UX Designer",
+    "email": "dohajaafari04@gmail.com",
+    "url": "https://dohajaafari04-sys.github.io/dohajaafari04.github.io/",
+    "description": "UI/UX Designer spécialisée en recherche utilisateur, wireframing et prototypage.",
+    "knowsAbout": ["UI Design", "UX Research", "Figma", "Prototypage", "Wireframing"],
+    "sameAs": ["https://www.linkedin.com/in/dohajaafari", "https://twitter.com/dohajaafari"]
+  }
+  </script>
+</head>
+
+<body itemscope itemtype="https://schema.org/WebPage">
+
+  <!-- Navigation -->
+  <nav class="navbar" role="navigation" aria-label="Navigation principale">
+    <a href="index.html" aria-label="Doha Jaafari – Accueil">
+      <img src="assets/logo.png" alt="Logo Doha Jaafari" width="40" height="40">
+    </a>
+    <button class="mobile-menu-toggle" aria-label="Ouvrir le menu de navigation" aria-expanded="false" aria-controls="nav-links">
+      <span></span>
+      <span></span>
+      <span></span>
+    </button>
+    <div class="nav-links" id="nav-links" role="menubar">
+      <a href="index.html" class="active" role="menuitem" aria-current="page">Home</a>
+      <a href="resume.html" role="menuitem">Resume</a>
+      <a href="portfolio.html" role="menuitem">Portfolio</a>
+      <a href="contact.html" role="menuitem">Contact</a>
+    </div>
+  </nav>
+
+  <!-- Contenu principal -->
+  <main id="main-content" aria-label="Contenu principal du portfolio">
+
+    <!-- Hero Section -->
+    <section id="home" class="hero" aria-labelledby="hero-title" itemscope itemtype="https://schema.org/Person">
+      <div class="hero-bg-curve" aria-hidden="true">
+        <svg width="100%" height="100%" viewBox="0 0 2362 1067" fill="none" preserveAspectRatio="none">
+          <path d="M2357.35 1061.5C2357.35 478.011 1830.76 5 1181.18 5C531.592 5 5 478.011 5 1061.5"
+            stroke="rgba(255,255,255,0.1)" stroke-width="10" />
+        </svg>
+      </div>
+    </section>
+
+    <!-- Skills Section -->
+    <section class="skills-section" aria-label="Compétences techniques" itemscope itemtype="https://schema.org/ItemList">
+      <div class="skill-item" itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem">
+        <div class="skill-icon" aria-hidden="true">
+          <svg width="56" height="56" viewBox="0 0 56 56" fill="none"><g clip-path="url(#figma-clip)"><path d="M19.856 2H10.032C5.596 2 2 5.596 2 10.036V10.032C2 14.472 5.592 18.072 10.032 18.072H19.856M19.856 2V18.072M19.856 2H29.68C34.116 2 37.712 5.596 37.712 10.036V10.032C37.712 14.472 34.12 18.072 29.68 18.072H19.856" stroke="white" stroke-opacity="0.41" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"/><path d="M37.712 26.9983C37.712 31.9263 33.712 35.9263 28.784 35.9263C23.856 35.9263 19.856 31.9263 19.856 26.9983C19.856 22.0703 23.856 18.0703 28.784 18.0703C33.712 18.0703 37.712 22.0703 37.712 26.9983Z" stroke="white" stroke-opacity="0.41" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"/><path d="M2 26.9983C2 22.0663 5.996 18.0703 10.928 18.0703H19.856V35.9263H10.928C5.996 35.9263 2 31.9263 2 26.9983Z" stroke="white" stroke-opacity="0.41" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"/><path d="M2 43.9623C2 39.5223 5.596 35.9263 10.032 35.9263H19.856V43.0703C19.856 48.0023 15.856 51.9983 10.928 51.9983H10.032C5.592 51.9983 2 48.3983 2 43.9623Z" stroke="white" stroke-opacity="0.41" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"/></g><defs><clipPath id="figma-clip"><rect width="56" height="56" fill="white"/></clipPath></defs></svg>
+        </div>
+        <p itemprop="name">Figma</p>
+      </div>
+      <div class="skill-item" itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem">
+        <div class="skill-icon" aria-hidden="true">
+          <svg width="56" height="56" viewBox="0 0 56 56" fill="none"><path d="M7 49L28 56L49 49L56 0H0M7 7H49V14H17.5L21 21H45.5L42 42H14V35H35V28H14" fill="white" fill-opacity="0.41"/></svg>
+        </div>
+        <p itemprop="name">CSS</p>
+      </div>
+      <div class="skill-item" itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem">
+        <div class="skill-icon" aria-hidden="true">
+          <svg width="56" height="56" viewBox="0 0 56 56" fill="none"><path d="M7 49L28 56L49 49L56 0H0M10.5 21H35L38.5 14H7V7H49L42 42H14V35H35V28H10.5" fill="white" fill-opacity="0.41"/></svg>
+        </div>
+        <p itemprop="name">HTML</p>
+      </div>
+      <div class="skill-item" itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem">
+        <div class="skill-icon" aria-hidden="true">
+          <svg width="56" height="56" viewBox="0 0 56 56" fill="none"><path fill-rule="evenodd" clip-rule="evenodd" d="M0.875 0.4375V55.125H55.5625V0.4375H0.875ZM29.8021 47.0369C28.9949 48.6771 27.454 49.7547 25.6686 50.2749C22.925 50.9049 20.3009 50.5457 18.3487 49.3741C17.0424 48.5726 16.0221 47.3388 15.3296 45.9174L19.4946 43.3668C19.5309 43.3821 19.6403 43.5798 19.7864 43.8353C20.3175 44.7252 20.7756 45.3552 21.6759 45.7975C22.5606 46.0994 24.5026 46.2923 25.2525 44.7357C25.7106 43.9438 25.5649 41.3984 25.5649 38.5823C25.5644 34.1569 25.585 29.75 25.585 25.375H30.7077C30.7077 30.1875 30.7339 34.7454 30.7077 39.4415C30.7186 42.3203 30.9684 44.8866 29.8021 47.0369ZM51.0532 45.5897C49.2726 51.6806 39.3448 51.8783 35.3776 47.8542C34.5393 46.907 34.0139 46.4122 33.5138 45.3189C35.6221 44.1061 35.6221 44.1061 37.6736 42.9192C38.7879 44.632 39.8182 45.5739 41.6719 45.9594C44.1866 46.2665 46.7167 45.4024 46.1493 42.7315C45.5661 40.5501 40.9999 40.0194 37.8923 37.6867C34.7375 35.5679 33.9981 30.4194 36.5908 27.4776C37.4548 26.3896 38.9283 25.5776 40.4744 25.1873L42.0879 24.9786C45.1859 24.9161 47.1223 25.7342 48.5437 27.3214C48.9392 27.7222 49.2621 28.1544 49.8658 29.0911C48.2156 30.1429 48.2208 30.1328 45.857 31.6632C45.3521 30.5756 44.5143 29.8931 43.6288 29.5964C42.2542 29.1799 40.5208 29.6328 40.1612 31.0853C40.0365 31.5328 40.0623 31.9493 40.2605 32.6887C40.8174 33.9588 42.6864 34.5109 44.3629 35.2813C49.189 37.2387 50.8187 39.3374 51.2194 41.8355C51.6053 43.9863 51.1263 45.3814 51.0532 45.5897Z" fill="white" fill-opacity="0.41"/></svg>
+        </div>
+        <p itemprop="name">JavaScript</p>
+      </div>
+      <div class="skill-item" itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem">
+        <div class="skill-icon" aria-hidden="true">
+          <svg width="56" height="56" viewBox="0 0 56 56" fill="none"><path fill-rule="evenodd" clip-rule="evenodd" d="M11.6693 2.33203C9.19392 2.33203 6.81995 3.31536 5.06961 5.0657C3.31927 6.81604 2.33594 9.19001 2.33594 11.6654V44.332C2.33594 46.8074 3.31927 49.1814 5.06961 50.9317C6.81995 52.682 9.19392 53.6654 11.6693 53.6654H44.3359C46.8113 53.6654 49.1853 52.682 50.9356 50.9317C52.6859 49.1814 53.6693 46.8074 53.6693 44.332V11.6654C53.6693 9.19001 52.6859 6.81604 50.9356 5.0657C49.1853 3.31536 46.8113 2.33203 44.3359 2.33203H11.6693ZM12.8359 16.332H21.0026C23.1685 16.332 25.2458 17.1924 26.7773 18.724C28.3089 20.2555 29.1693 22.3328 29.1693 24.4987C29.1693 26.6646 28.3089 28.7419 26.7773 30.2734C25.2458 31.8049 23.1685 32.6654 21.0026 32.6654H17.5026V39.6654H12.8359V16.332ZM17.5026 27.9987H21.0026C21.9309 27.9987 22.8211 27.6299 23.4775 26.9736C24.1339 26.3172 24.5026 25.427 24.5026 24.4987C24.5026 23.5704 24.1339 22.6802 23.4775 22.0238C22.8211 21.3674 21.9309 20.9987 21.0026 20.9987H17.5026V27.9987Z" fill="white" fill-opacity="0.41"/></svg>
+        </div>
+        <p itemprop="name">PhotoShop</p>
+      </div>
+      <div class="skill-item" itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem">
+        <div class="skill-icon" aria-hidden="true">
+          <svg width="56" height="56" viewBox="0 0 56 56" fill="none"><path fill-rule="evenodd" clip-rule="evenodd" d="M11.6693 2.33203C9.19392 2.33203 6.81995 3.31536 5.06961 5.0657C3.31927 6.81604 2.33594 9.19001 2.33594 11.6654V44.332C2.33594 46.8074 3.31927 49.1814 5.06961 50.9317C6.81995 52.682 9.19392 53.6654 11.6693 53.6654H44.3359C46.8113 53.6654 49.1853 52.682 50.9356 50.9317C52.6859 49.1814 53.6693 46.8074 53.6693 44.332V11.6654C53.6693 9.19001 52.6859 6.81604 50.9356 5.0657C49.1853 3.31536 46.8113 2.33203 44.3359 2.33203H11.6693ZM38.3813 20.2334C39.0001 20.2334 39.5936 19.9875 40.0312 19.5499C40.4688 19.1124 40.7146 18.5189 40.7146 17.9C40.7146 17.2812 40.4688 16.6877 40.0312 16.2501C39.5936 15.8125 39.0001 15.5667 38.3813 15.5667C37.7624 15.5667 37.1689 15.8125 36.7314 16.2501C36.2938 16.6877 36.0479 17.2812 36.0479 17.9C36.0479 18.5189 36.2938 19.1124 36.7314 19.5499C37.1689 19.9875 37.7624 20.2334 38.3813 20.2334ZM40.7146 39.6V22.7464H36.0479V39.6H40.7146ZM11.3799 39.6L18.8326 18.3014V16.7614H24.7849L33.0309 39.6H27.9163L25.9749 34.2637H17.9063L16.0979 39.6H11.3799ZM19.1849 29.723H24.6519L21.9196 20.8167L19.1849 29.723Z" fill="white" fill-opacity="0.41"/></svg>
+        </div>
+        <p itemprop="name">Illustrator</p>
+      </div>
+    </section>
+
+    <!-- About Section -->
+    <section id="about" class="about-section" aria-labelledby="about-title" itemscope itemtype="https://schema.org/Person">
+      <div class="about-parent">
+        <div class="about-container">
+          <div class="about-badge" aria-hidden="true"><span>About Me</span></div>
+          <div class="about-content">
+            <p itemprop="description">My name is Doha Jaafari, and I'm passionate about User Experience Design and creating digital solutions that are simple, useful, and human-centered.</p>
+            <p>Curious, creative, and organized, I love understanding real user needs and turning their problems into smooth and intuitive experiences.</p>
+            <p>I value user research, clarity, and visual consistency in every project I work on.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Education & Drives Section -->
+    <section class="combined-section" aria-labelledby="education-title">
+      <div class="combined-container">
+        <div class="combined-wrapper">
+          <div class="education-section-left">
+            <div class="education-container">
+              <h2 id="education-title"><span class="bullet" aria-hidden="true"></span> Education Background</h2>
+              <div class="education-timeline">
+                <div class="education-item" itemscope itemtype="https://schema.org/EducationalOccupationalCredential">
+                  <div class="education-content">
+                    <h3 itemprop="name">Professional Bachelor's Degree — Digital Professions: Web Conception, Writing &amp; Development</h3>
+                    <p itemprop="recognizedBy">University of Reims Champagne-Ardenne — Webdesign &amp; Integration</p>
+                  </div>
+                  <div class="education-year"><time itemprop="dateCreated">2025</time></div>
+                </div>
+                <div class="education-item" itemscope itemtype="https://schema.org/EducationalOccupationalCredential">
+                  <div class="education-content">
+                    <h3 itemprop="name">Specialized Technician Diploma — UX/UI Design</h3>
+                    <p itemprop="recognizedBy">OFPPT NTIC Rabat — UX, UI, Ergonomics, User Testing &amp; Information Architecture</p>
+                  </div>
+                  <div class="education-year"><time itemprop="dateCreated">2024</time></div>
+                </div>
+                <div class="education-item" itemscope itemtype="https://schema.org/EducationalOccupationalCredential">
+                  <div class="education-content">
+                    <h3 itemprop="name">Baccalaureate — Physics Sciences</h3>
+                    <p>Graduated in Morocco in 2023</p>
+                  </div>
+                  <div class="education-year"><time>2023</time></div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="drives-section-right">
+            <div class="philosophy-card">
+              <div class="drives-badge"><span>What Drives Me</span></div>
+              <p class="philosophy-text">Creating interfaces that solve problems, help people, and deliver a positive experience.<br>To me, good design should be:</p>
+              <p class="philosophy-values">✨ Simple — 💡 Intuitive — 🎯 Useful — 🎨 Aesthetic</p>
+            </div>
+            <div class="skills-cards">
+              <div class="skill-card">
+                <h3>UX Design</h3>
+                <ul aria-label="Compétences UX Design">
+                  <li>User Needs Analysis</li>
+                  <li>User testing</li>
+                  <li>Information Architecture</li>
+                  <li>Wireframing &amp; prototyping</li>
+                  <li>Design Thinking</li>
+                </ul>
+              </div>
+              <div class="skill-card">
+                <h3>UI Design &amp; Integration</h3>
+                <ul aria-label="Compétences UI Design">
+                  <li>Design systems</li>
+                  <li>High-fidelity mockups</li>
+                  <li>HTML / CSS / JavaScript</li>
+                  <li>WordPress</li>
+                  <li>Creating coherent and accessible interfaces</li>
+                </ul>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Experience Section -->
+    <section id="experience" class="experience-section" aria-labelledby="exp-title">
+      <div class="experience-header">
+        <p class="gradient-text" aria-hidden="true">My Experiences</p>
+        <h2 id="exp-title">Where I've Been Employed</h2>
+      </div>
+      <div class="experience-list">
+        <div class="experience-item" itemscope itemtype="https://schema.org/WorkExperience">
+          <div class="experience-left">
+            <h3 itemprop="roleName">UX/UI Designer Intern — IT Company</h3>
+            <p class="date"><time itemprop="startDate">August 2023</time> — 1 month</p>
+          </div>
+          <div class="experience-right">
+            <p itemprop="description">During this internship, I worked on redesigning the company's website by identifying usability issues and proposing solutions to improve the user experience. I created wireframes and interactive prototypes to visualize the new design and collaborated with the team to ensure a clear and intuitive interface.</p>
+          </div>
+        </div>
+        <div class="divider" aria-hidden="true"></div>
+        <div class="experience-item" itemscope itemtype="https://schema.org/WorkExperience">
+          <div class="experience-left">
+            <h3 itemprop="roleName">UX Designer — Moroccan Customs Administration, Rabat</h3>
+            <p class="date"><time itemprop="startDate">March 2025</time> – <time itemprop="endDate">May 2025</time> — 2 months</p>
+          </div>
+          <div class="experience-right">
+            <p itemprop="description">I contributed to several UX projects, including the redesign of the intranet and key pages of the official website. I also created an educational interactive game for the Customs Museum. My work involved user research (personas, empathy maps, journey maps), wireframing, and prototyping to improve usability and overall clarity.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- Footer -->
+  <footer class="footer" role="contentinfo" aria-label="Pied de page">
+    <div class="footer-content">
+      <div class="footer-left">
+        <a href="mailto:dohajaafari04@gmail.com" class="footer-email" aria-label="Envoyer un email à Doha Jaafari">📧 dohajaafari04@gmail.com</a>
+      </div>
+      <div class="footer-center">
+        <span class="brand-text" aria-hidden="true">© 2025</span>
+      </div>
+      <div class="footer-right" aria-label="Réseaux sociaux">
+        <a href="https://www.linkedin.com/in/dohajaafari" rel="nofollow noopener noreferrer" target="_blank" aria-label="Profil LinkedIn de Doha Jaafari">LinkedIn</a>
+        <a href="https://www.instagram.com/dohajaafari" rel="nofollow noopener noreferrer" target="_blank" aria-label="Instagram de Doha Jaafari">Instagram</a>
+        <a href="https://twitter.com/dohajaafari" rel="nofollow noopener noreferrer" target="_blank" aria-label="X (Twitter) de Doha Jaafari">X</a>
+      </div>
+    </div>
+    <div class="footer-name" aria-hidden="true">
+      <img src="assets/Footer.png" alt="" role="presentation" width="800" height="150" loading="lazy">
+    </div>
+  </footer>
+
+  <!-- Service Worker PWA -->
+  <script>
+    if ('serviceWorker' in navigator) {
+      window.addEventListener('load', function() {
+        navigator.serviceWorker.register('sw.js');
+      });
+    }
+  </script>
+
+  <script src="script.js"></script>
+</body>
+</html>

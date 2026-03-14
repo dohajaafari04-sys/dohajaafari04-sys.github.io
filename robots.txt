@@ -1,0 +1,3 @@
+User-agent: *
+Allow: /
+Sitemap: https://dohajaafari04-sys.github.io/dohajaafari04.github.io/sitemap.xml
