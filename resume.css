@@ -1,0 +1,832 @@
+/* Import Google Fonts */
+@import url('https://fonts.googleapis.com/css2?family=Imperial+Script&family=Inter:wght@400;500;700&family=Rajdhani:wght@400;500;600;700&family=Spectral:ital,wght@0,400;0,500;1,400;1,500&family=Lato:ital,wght@0,300;0,400;1,300&family=ABeeZee:ital@1&display=swap');
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    background-color: #000;
+    color: #fff;
+    font-family: 'Lato', sans-serif;
+    overflow-x: hidden;
+}
+
+.container {
+    max-width: 1440px;
+    margin: 0 auto;
+    padding-top: 24px;
+    padding-left: 48px;
+    padding-right: 48px;
+    position: relative;
+}
+
+/* Navigation */
+.navbar {
+    position: fixed;
+    top: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    z-index: 1000;
+    margin-top: 10px;
+    margin-left: auto;
+    margin-right: auto;
+    width: 40%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 20px 80px;
+    background: rgba(120, 120, 120, 0.25);
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+    border-radius: 20px;
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
+}
+
+.navbar img {
+    max-width: 100%;
+    height: auto;
+    max-height: 40px;
+}
+  
+  .nav-logo {
+    font-size: 24px;
+    font-weight: bold;
+    font-style: italic;
+  }
+  
+  .nav-links {
+    display: flex;
+    gap: 20px;
+  }
+  
+  .nav-links a {
+    color: rgba(255, 255, 255, 0.8);
+    text-decoration: none;
+    font-size: 14px;
+    letter-spacing: 0.5px;
+    transition: color 0.3s ease;
+  }
+  
+  .nav-links a:hover {
+    color: #ffffff;
+  }
+
+/* Mobile Menu Toggle */
+.mobile-menu-toggle {
+    display: none;
+    flex-direction: column;
+    gap: 5px;
+    background: transparent;
+    border: none;
+    cursor: pointer;
+    padding: 5px;
+    z-index: 1001;
+}
+
+.mobile-menu-toggle span {
+    width: 25px;
+    height: 2px;
+    background: rgba(255, 255, 255, 0.8);
+    transition: all 0.3s ease;
+    border-radius: 2px;
+}
+
+.mobile-menu-toggle.active span:nth-child(1) {
+    transform: rotate(45deg) translate(8px, 8px);
+}
+
+.mobile-menu-toggle.active span:nth-child(2) {
+    opacity: 0;
+}
+
+.mobile-menu-toggle.active span:nth-child(3) {
+    transform: rotate(-45deg) translate(7px, -7px);
+}
+
+/* Breadcrumb */
+.breadcrumb {
+    margin-bottom: 42px;
+    margin-top: 100px;
+}
+
+.breadcrumb p {
+    font-family: 'Rajdhani', sans-serif;
+    font-size: 36px;
+    color: #f7ead5;
+    text-align: center;
+}
+
+/* Resume Card */
+.resume-card {
+    max-width: 1121px;
+    margin: 0 auto 80px;
+    background: linear-gradient(79.0637deg, rgba(230, 62, 33, 0.2) 10.396%, rgba(51, 19, 14, 0) 25.531%), linear-gradient(90deg, rgb(27, 27, 27) 0%, rgb(27, 27, 27) 100%);
+    border: 2px solid #e63e21;
+    border-radius: 40px;
+    padding: 60px 70px;
+    position: relative;
+    transform: rotate(180deg);
+}
+
+/* Header Section */
+.header-section {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 32px;
+    transform: rotate(180deg);
+}
+
+.name-title .name {
+    font-family: 'Spectral', serif;
+    font-size: 32px;
+    color: #f3500f;
+    font-weight: 400;
+}
+
+.job-title p {
+    font-family: 'Spectral', serif;
+    font-size: 32px;
+    color: #c2c2c2;
+    font-weight: 400;
+}
+
+/* Contact Info */
+.contact-info {
+    display: flex;
+    gap: 16px;
+    flex-wrap: wrap;
+    margin-bottom: 32px;
+    transform: rotate(180deg);
+}
+
+.contact-item {
+    display: flex;
+    align-items: center;
+    gap: 4px;
+    color: #fff;
+    text-decoration: none;
+    font-family: 'Lato', sans-serif;
+    font-weight: 300;
+    font-size: 20px;
+    transition: color 0.3s ease;
+}
+
+.contact-item:hover {
+    color: #f3500f;
+}
+
+.icon {
+    width: 18px;
+    height: 18px;
+    flex-shrink: 0;
+}
+
+/* About Section */
+.about-section {
+    background: rgba(255, 255, 255, 0.1);
+    backdrop-filter: blur(25.5px);
+    -webkit-backdrop-filter: blur(25.5px);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 8px;
+    padding: 14px;
+    margin-bottom: 32px;
+    transform: rotate(180deg);
+}
+
+.about-section p {
+    font-family: 'Spectral', serif;
+    font-size: 14px;
+    font-weight: 300;
+    color: #fff;
+    line-height: 1.5;
+    letter-spacing: -0.7px;
+}
+
+/* Experience Section */
+.experience-section {
+    margin-bottom: 48px;
+    transform: rotate(180deg);
+}
+
+.section-title {
+    font-family: 'Spectral', serif;
+    font-size: 32px;
+    color: #f3500f;
+    text-transform: uppercase;
+    letter-spacing: 4.8px;
+    font-weight: 400;
+    margin-bottom: 24px;
+}
+
+.job {
+    margin-bottom: 32px;
+}
+
+.job-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 12px;
+    flex-wrap: wrap;
+    gap: 16px;
+}
+
+.job-header h3 {
+    font-family: 'Spectral', serif;
+    font-size: 20px;
+    font-weight: 500;
+    font-style: italic;
+    letter-spacing: -0.6px;
+    color: #fff;
+}
+
+.job-meta {
+    display: flex;
+    align-items: center;
+    gap: 4px;
+    font-family: 'Lato', sans-serif;
+    font-size: 16px;
+    font-weight: 300;
+    color: #fff;
+}
+
+.icon-small {
+    width: 20px;
+    height: 20px;
+    flex-shrink: 0;
+}
+
+.job-details {
+    list-style: disc;
+    padding-left: 24px;
+    margin-bottom: 12px;
+}
+
+.job-details li {
+    font-family: 'Lato', sans-serif;
+    font-size: 16px;
+    line-height: 20px;
+    color: #fff;
+    margin-bottom: 4px;
+}
+
+.impact-label {
+    font-family: 'Lato', sans-serif;
+    font-size: 16px;
+    line-height: 20px;
+    color: #fff;
+    font-weight: 400;
+    margin-bottom: 4px;
+}
+
+.impact-text {
+    font-family: 'Lato', sans-serif;
+    font-size: 16px;
+    line-height: 20px;
+    color: #fff;
+    margin-bottom: 12px;
+}
+
+.divider {
+    width: 100%;
+    height: 1px;
+    background-color: #ededed;
+    margin-top: 12px;
+}
+
+/* Skills and Education */
+.skills-education {
+    display: flex;
+    gap: 32px;
+    margin-bottom: 48px;
+    transform: rotate(180deg);
+}
+
+.skills-column,
+.education-column {
+    flex: 1;
+}
+
+.skill-set,
+.education-item {
+    margin-bottom: 24px;
+}
+
+.skill-set h4,
+.education-item h4 {
+    font-family: 'Spectral', serif;
+    font-size: 16px;
+    font-weight: 500;
+    font-style: italic;
+    letter-spacing: -0.48px;
+    color: #fff;
+    margin-bottom: 4px;
+}
+
+.skill-set p {
+    font-family: 'Lato', sans-serif;
+    font-size: 10px;
+    line-height: 14px;
+    color: #fff;
+}
+
+.education-meta {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 8px;
+    gap: 8px;
+}
+
+.meta-item {
+    display: flex;
+    align-items: center;
+    gap: 4px;
+    font-family: 'Lato', sans-serif;
+    font-size: 10px;
+    font-weight: 300;
+    color: #fff;
+}
+
+.icon-tiny {
+    width: 12px;
+    height: 12px;
+    flex-shrink: 0;
+}
+
+.divider-small {
+    width: 230px;
+    height: 1px;
+    background-color: #ededed;
+    margin-top: 8px;
+}
+
+/* Footer */
+.footer {
+    margin-top: 120px;
+    
+}
+
+.footer-content {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-end;
+    
+}
+
+.footer-email {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+}
+
+.footer-icon {
+    width: 32px;
+    height: 32px;
+}
+
+.footer-email span {
+    font-family: 'Rajdhani', sans-serif;
+    font-size: 40px;
+    color: #fff;
+}
+
+.footer-copyright {
+    font-family: 'Rajdhani', sans-serif;
+    font-size: 24px;
+    color: #fff;
+}
+
+.footer-social {
+    display: flex;
+    gap: 32px;
+}
+
+.footer-social a {
+    font-family: 'Rajdhani', sans-serif;
+    font-size: 40px;
+    color: #fff;
+    text-decoration: none;
+    transition: color 0.3s ease;
+}
+
+.footer-social a:hover {
+    color: #f3500f;
+}
+
+.footer-name {
+    text-align: center;
+}
+
+.footer-name img {
+    max-width: 100%;
+    height: auto;
+    display: block;
+    margin: 0 auto;
+}
+
+/* Responsive Design */
+@media (max-width: 1400px) {
+    .navbar {
+        width: 50%;
+        padding: 20px 60px;
+    }
+}
+
+@media (max-width: 1200px) {
+    .navbar {
+        width: 60%;
+        padding: 20px 50px;
+    }
+
+    .container {
+        padding-left: 40px;
+        padding-right: 40px;
+    }
+
+    .resume-card {
+        padding: 50px 60px;
+    }
+
+    .breadcrumb p {
+        font-size: 32px;
+    }
+}
+
+@media (max-width: 1024px) {
+    .navbar {
+        width: 70%;
+        padding: 18px 40px;
+    }
+
+    .navbar img {
+        max-height: 35px;
+    }
+
+    .nav-links {
+        gap: 15px;
+    }
+
+    .nav-links a {
+        font-size: 13px;
+    }
+
+    .container {
+        padding-left: 30px;
+        padding-right: 30px;
+    }
+
+    .breadcrumb {
+        margin-top: 90px;
+    }
+
+    .breadcrumb p {
+        font-size: 28px;
+    }
+
+    .resume-card {
+        padding: 40px 50px;
+    }
+
+    .name-title .name,
+    .job-title p {
+        font-size: 28px;
+    }
+
+    .section-title {
+        font-size: 28px;
+    }
+
+    .contact-item {
+        font-size: 18px;
+    }
+
+    .skills-education {
+        flex-direction: column;
+        gap: 24px;
+    }
+
+    .job-header {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 12px;
+    }
+
+    .footer-content {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 24px;
+    }
+
+    .footer-email span,
+    .footer-social a {
+        font-size: 32px;
+    }
+
+    .footer-copyright {
+        font-size: 20px;
+    }
+}
+
+@media (max-width: 768px) {
+    .navbar {
+        width: 90%;
+        padding: 15px 25px;
+        margin-top: 5px;
+        flex-wrap: wrap;
+    }
+
+    .navbar img {
+        max-height: 30px;
+    }
+
+    .mobile-menu-toggle {
+        display: flex;
+    }
+
+    .nav-links {
+        display: none;
+        width: 100%;
+        flex-direction: column;
+        gap: 15px;
+        margin-top: 20px;
+        padding-top: 20px;
+        border-top: 1px solid rgba(255, 255, 255, 0.1);
+    }
+
+    .nav-links.active {
+        display: flex;
+    }
+
+    .nav-links a {
+        font-size: 14px;
+        letter-spacing: 0.3px;
+        padding: 10px 0;
+        text-align: center;
+    }
+
+    .container {
+        padding: 16px 24px;
+        padding-top: 20px;
+    }
+
+    .breadcrumb {
+        margin-top: 80px;
+        margin-bottom: 30px;
+    }
+
+    .breadcrumb p {
+        font-size: 24px;
+    }
+
+    .resume-card {
+        padding: 30px 24px;
+        border-radius: 30px;
+    }
+
+    .header-section {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 12px;
+        margin-bottom: 24px;
+    }
+
+    .name-title .name,
+    .job-title p {
+        font-size: 24px;
+    }
+
+    .contact-info {
+        flex-direction: column;
+        gap: 12px;
+    }
+
+    .contact-item {
+        font-size: 16px;
+    }
+
+    .about-section {
+        padding: 12px;
+    }
+
+    .about-section p {
+        font-size: 13px;
+    }
+
+    .section-title {
+        font-size: 24px;
+        letter-spacing: 3px;
+        margin-bottom: 20px;
+    }
+
+    .job-header h3 {
+        font-size: 18px;
+    }
+
+    .job-meta {
+        font-size: 14px;
+    }
+
+    .job-details li,
+    .impact-label,
+    .impact-text {
+        font-size: 14px;
+    }
+
+    .skill-set h4,
+    .education-item h4 {
+        font-size: 15px;
+    }
+
+    .skill-set p,
+    .meta-item {
+        font-size: 9px;
+    }
+
+    .footer-content {
+        padding: 0 20px;
+    }
+
+    .footer-email span,
+    .footer-social a {
+        font-size: 24px;
+    }
+
+    .footer-copyright {
+        font-size: 18px;
+    }
+
+    .footer-icon {
+        width: 28px;
+        height: 28px;
+    }
+}
+
+@media (max-width: 480px) {
+    .navbar {
+        width: 95%;
+        padding: 12px 15px;
+        margin-top: 5px;
+        border-radius: 15px;
+    }
+
+    .navbar img {
+        max-height: 25px;
+    }
+
+    .mobile-menu-toggle span {
+        width: 22px;
+    }
+
+    .nav-links {
+        gap: 12px;
+        margin-top: 15px;
+        padding-top: 15px;
+    }
+
+    .nav-links a {
+        font-size: 13px;
+        letter-spacing: 0.2px;
+        padding: 8px 0;
+    }
+
+    .container {
+        padding: 12px 16px;
+        padding-top: 16px;
+    }
+
+    .breadcrumb {
+        margin-top: 70px;
+        margin-bottom: 24px;
+    }
+
+    .breadcrumb p {
+        font-size: 20px;
+    }
+
+    .resume-card {
+        padding: 24px 18px;
+        border-radius: 24px;
+    }
+
+    .header-section {
+        margin-bottom: 20px;
+    }
+
+    .name-title .name,
+    .job-title p {
+        font-size: 20px;
+    }
+
+    .contact-item {
+        font-size: 14px;
+        gap: 3px;
+    }
+
+    .icon {
+        width: 16px;
+        height: 16px;
+    }
+
+    .about-section p {
+        font-size: 12px;
+    }
+
+    .section-title {
+        font-size: 20px;
+        letter-spacing: 2px;
+        margin-bottom: 16px;
+    }
+
+    .job {
+        margin-bottom: 24px;
+    }
+
+    .job-header h3 {
+        font-size: 16px;
+    }
+
+    .job-meta {
+        font-size: 12px;
+    }
+
+    .icon-small {
+        width: 18px;
+        height: 18px;
+    }
+
+    .job-details {
+        padding-left: 20px;
+    }
+
+    .job-details li,
+    .impact-label,
+    .impact-text {
+        font-size: 12px;
+        line-height: 18px;
+    }
+
+    .skill-set,
+    .education-item {
+        margin-bottom: 20px;
+    }
+
+    .skill-set h4,
+    .education-item h4 {
+        font-size: 14px;
+    }
+
+    .skill-set p,
+    .meta-item {
+        font-size: 8px;
+        line-height: 12px;
+    }
+
+    .icon-tiny {
+        width: 10px;
+        height: 10px;
+    }
+
+    .divider-small {
+        width: 100%;
+    }
+
+    .footer-content {
+        padding: 0 15px;
+        gap: 16px;
+    }
+
+    .footer-email {
+        gap: 10px;
+    }
+
+    .footer-icon {
+        width: 24px;
+        height: 24px;
+    }
+
+    .footer-email span {
+        font-size: 20px;
+    }
+
+    .footer-copyright {
+        font-size: 16px;
+    }
+
+    .footer-social {
+        gap: 20px;
+    }
+
+    .footer-social a {
+        font-size: 20px;
+    }
+}
+
+/* Nav active state */
+.nav-links a.active {
+  color: #F3500F !important;
+}
