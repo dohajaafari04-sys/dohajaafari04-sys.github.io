@@ -1,0 +1,484 @@
+﻿<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Haven — Case Study · Doha Jaafari</title>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,700;0,900;1,400&family=DM+Sans:wght@300;400;500&family=Space+Mono&display=swap" rel="stylesheet">
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --bg:      #0a0a0a;
+      --bg2:     #0f0f0f;
+      --bg3:     #141414;
+      --surf:    #181818;
+      --brd:     rgba(255,255,255,0.07);
+      --brd-h:   rgba(255,255,255,0.14);
+      --txt:     #f0ede8;
+      --muted:   rgba(240,237,232,0.45);
+      --dim:     rgba(240,237,232,0.2);
+      --acc:     #3BC496;
+      --acc2:    #3BC496;
+      --mono:    'Space Mono', monospace;
+      --disp:    'Playfair Display', serif;
+      --body:    'DM Sans', sans-serif;
+      --r:       12px;
+      --rl:      20px;
+    }
+
+    html { scroll-behavior: smooth; }
+    body { font-family: var(--body); background: var(--bg); color: var(--txt); overflow-x: hidden; }
+    a { color: inherit; text-decoration: none; }
+    img { max-width: 100%; display: block; }
+    .wrap { max-width: 980px; width: 100%; margin: 0 auto; padding: 0 2.5rem; }
+    nav, .hero, .stats, .sec, .cta, footer, .footer-new { width: 100%; box-sizing: border-box; }
+
+    /* NAV */
+    nav {
+      position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+      padding: 1.2rem 0;
+      display: flex; justify-content: center; align-items: center;
+      background: rgba(10,10,10,0.88); backdrop-filter: blur(18px);
+      border-bottom: 1px solid var(--brd);
+    }
+    .nav-inner {
+      max-width: 980px; width: 100%; padding: 0 2.5rem;
+      display: flex; justify-content: space-between; align-items: center;
+    }
+    .nlogo { font-family: var(--disp); font-size: 1.2rem; font-weight: 700; }
+    .nlogo span { color: var(--acc2); }
+    .nlinks { display: flex; gap: 2rem; list-style: none; }
+    .nlinks a { font-size: .78rem; color: var(--muted); transition: color .2s; }
+    .nlinks a:hover { color: var(--txt); }
+
+    /* HERO */
+    .hero {
+      min-height: 100vh; padding-top: 6.5rem; padding-bottom: 4.5rem;
+      background: var(--bg); position: relative; overflow: hidden;
+    }
+    .h-glow {
+      position: absolute; inset: 0; pointer-events: none;
+      background:
+        radial-gradient(ellipse 60% 50% at 22% 65%, rgba(201,184,232,0.09) 0%, transparent 70%),
+        radial-gradient(ellipse 40% 38% at 74% 36%, rgba(244,167,185,0.06) 0%, transparent 60%);
+    }
+    .h-dots {
+      position: absolute; inset: 0; pointer-events: none;
+      background-image: radial-gradient(rgba(255,255,255,0.035) 1px, transparent 1px);
+      background-size: 30px 30px;
+      mask-image: radial-gradient(ellipse 80% 80% at 38% 52%, black 10%, transparent 80%);
+    }
+    .h-inner {
+      position: relative;
+      z-index: 2;
+      min-height: calc(100vh - 11rem);
+      display: grid;
+      grid-template-columns: minmax(0, 1fr) clamp(240px, 30vw, 360px);
+      column-gap: clamp(2rem, 5vw, 5rem);
+      row-gap: 1.5rem;
+      align-items: center;
+      align-content: center;
+    }
+    .h-back {
+      display: inline-flex; align-items: center; gap: .5rem;
+      font-family: var(--mono); font-size: .56rem; letter-spacing: .12em; text-transform: uppercase;
+      color: var(--dim); margin-bottom: 3.5rem; transition: color .2s;
+      grid-column: 1;
+    }
+    .h-back:hover { color: var(--acc); }
+    .h-back:hover svg { transform: translateX(-3px); }
+    .h-back svg { transition: transform .2s; }
+    .h-eye { font-family: var(--mono); font-size: .56rem; letter-spacing: .18em; color: var(--acc); text-transform: uppercase; margin-bottom: 1.8rem; display: block; grid-column: 1; }
+    .h-title { font-family: var(--disp); font-size: clamp(4rem,12vw,9rem); font-weight: 900; line-height: .85; letter-spacing: -.04em; color: var(--txt); margin-bottom: 1.5rem; grid-column: 1; }
+    .h-title em { color: var(--acc2); font-style: italic; }
+    .h-mockup {
+      position: relative;
+      grid-column: 2;
+      grid-row: 1 / span 4;
+      width: min(100%, 360px);
+      justify-self: end;
+      align-self: center;
+      z-index: 3; pointer-events: none;
+    }
+    .h-mockup img { width: 100%; filter: drop-shadow(0 40px 120px rgba(201,184,232,0.18)); }
+    .h-meta {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 1.5rem 2.5rem;
+      padding-top: 2rem;
+      border-top: 1px solid var(--brd);
+      grid-column: 1;
+      max-width: 100%;
+    }
+    .h-mi { display: flex; flex-direction: column; gap: .3rem; }
+    .h-ml { font-family: var(--mono); font-size: .48rem; letter-spacing: .14em; text-transform: uppercase; color: var(--dim); }
+    .h-mv { font-size: .8rem; color: var(--muted); }
+
+    /* STATS */
+    .stats { background: var(--surf); border-top: 1px solid var(--brd); border-bottom: 1px solid var(--brd); padding: 2.5rem 0; }
+    .stats-g { display: grid; grid-template-columns: repeat(4,1fr); }
+    .stat { padding: 0 2rem; border-right: 1px solid var(--brd); text-align: center; }
+    .stat:last-child { border-right: none; }
+    .sn { font-family: var(--disp); font-size: 2.5rem; font-weight: 900; color: var(--acc); letter-spacing: -.03em; line-height: 1; margin-bottom: .4rem; }
+    .sl { font-family: var(--mono); font-size: .48rem; letter-spacing: .1em; text-transform: uppercase; color: var(--dim); line-height: 1.6; }
+
+    /* SECTIONS */
+    .sec { padding: 6rem 0; border-bottom: 1px solid var(--brd); }
+    .sec.a { background: var(--bg2); }
+    .sec.b { background: var(--bg3); }
+    .sec.c { background: #050505; }
+
+    .lbl { font-family: var(--mono); font-size: .52rem; letter-spacing: .18em; text-transform: uppercase; color: var(--acc); margin-bottom: .8rem; display: block; }
+    .ttl { font-family: var(--disp); font-size: clamp(1.8rem,4vw,2.8rem); font-weight: 700; letter-spacing: -.02em; line-height: 1.1; margin-bottom: 1.2rem; color: var(--txt); }
+    .ttl em { color: var(--acc2); font-style: italic; }
+    .bdy { font-size: .87rem; color: var(--muted); line-height: 1.85; max-width: 580px; }
+
+    /* 2 COL */
+    .tc { display: grid; grid-template-columns: 1fr 1fr; gap: 5rem; align-items: start; }
+
+    /* DT IMAGE */
+    .dt-wrap { margin-top: 3rem; border-radius: var(--rl); overflow: hidden; border: 1px solid var(--brd); background: transparent; }
+    .dt-wrap img { width: 100%; display: block; }
+
+    /* PERSONA */
+    .persona-img-wrap { margin-top: 2.5rem; border-radius: var(--rl); overflow: hidden; border: 1px solid var(--brd); }
+    .persona-img-wrap img { width: 100%; display: block; }
+
+    /* SCREENS */
+    .scr-wrap { margin-top: 3rem; border-radius: var(--rl); overflow: hidden; border: 1px solid var(--brd); background: transparent; }
+    .scr-wrap img { width: 100%; display: block; mix-blend-mode: lighten; }
+
+    /* DECISIONS */
+    .decs { display: flex; flex-direction: column; gap: 1.5rem; margin-top: 2rem; }
+    .dec { display: grid; grid-template-columns: 2.5rem 1fr; gap: 1.5rem; align-items: start; }
+    .dn { font-family: var(--disp); font-size: 2rem; font-weight: 900; color: var(--brd); line-height: 1; text-align: right; }
+    .dt_ { font-size: .84rem; font-weight: 500; color: var(--txt); margin-bottom: .35rem; }
+    .dd { font-size: .74rem; color: var(--muted); line-height: 1.75; }
+
+    /* LEARNINGS */
+    .learning-para {
+      max-width: 640px;
+      border-left: 2px solid var(--acc2);
+      padding-left: 2rem;
+    }
+    .learning-para p {
+      font-size: .96rem;
+      color: var(--muted);
+      line-height: 2;
+      font-style: italic;
+    }
+
+    /* INS PARAGRAPH */
+    .ins-para {
+      margin-top: 2rem;
+      border-left: 2px solid rgba(201,184,232,0.4);
+      padding-left: 2rem;
+      max-width: 680px;
+    }
+    .ins-para p {
+      font-size: .92rem;
+      color: var(--muted);
+      line-height: 2;
+    }
+
+    /* STYLE GUIDE IMAGE */
+    .sg-img-wrap {
+      margin-top: 2rem;
+      border-radius: 20px;
+      overflow: hidden;
+      border: 1px solid var(--brd);
+    }
+    .sg-img-wrap img {
+      border-radius: 20px;
+      box-shadow: 0 8px 40px rgba(0,0,0,0.3);
+      width: 100%;
+      display: block;
+    }
+
+    /* CTA */
+    .cta { padding: 7rem 0; border-bottom: none; }
+    .ctai { display: grid; grid-template-columns: 1fr auto; gap: 4rem; align-items: center; }
+    .ctal { font-family: var(--mono); font-size: .5rem; letter-spacing: .14em; text-transform: uppercase; color: var(--dim); margin-bottom: .8rem; }
+    .ctat { font-family: var(--disp); font-size: clamp(2rem,4vw,3rem); font-weight: 700; letter-spacing: -.02em; line-height: 1.1; color: var(--txt); }
+    .ctat em { color: var(--acc2); font-style: italic; }
+    .btns { display: flex; gap: 1rem; flex-wrap: wrap; }
+    .bp { background: linear-gradient(135deg,#c9b8e8,#f4a7b9); color: #1a0f2e; padding: .9rem 1.8rem; border-radius: 100px; font-size: .78rem; font-weight: 600; transition: opacity .2s; }
+    .bp:hover { opacity: .88; }
+    .bo { border: 1px solid var(--brd); color: var(--muted); padding: .9rem 1.8rem; border-radius: 100px; font-size: .78rem; transition: all .2s; }
+    .bo:hover { border-color: var(--brd-h); color: var(--txt); }
+
+    /* FOOTER */
+    .footer-new {
+      padding: 3rem 0;
+      border-top: 1px solid var(--brd);
+      background: var(--bg);
+      width: 100%;
+      box-sizing: border-box;
+      display: flex;
+      justify-content: center;
+    }
+    .footer-inner {
+      max-width: 980px; width: 100%; padding: 0 2.5rem;
+      display: flex; justify-content: space-between; align-items: center; gap: 2rem;
+    }
+    .footer-logo-big {
+      font-family: var(--disp);
+      font-size: 2rem;
+      font-weight: 900;
+      color: var(--txt);
+      letter-spacing: -.02em;
+    }
+    .footer-logo-big span { color: var(--acc2); }
+    .fc { font-family: var(--mono); font-size: .48rem; letter-spacing: .08em; color: var(--dim); }
+
+    /* FADE */
+    .f { opacity: 0; transform: translateY(26px); transition: opacity .65s ease, transform .65s ease; }
+    .f.v { opacity: 1; transform: none; }
+    .f.d1 { transition-delay: .1s; }
+    .f.d2 { transition-delay: .2s; }
+    .f.d3 { transition-delay: .3s; }
+
+    /* RESPONSIVE */
+    @media(max-width:900px){
+      .wrap{padding:0 1.5rem;}
+      .h-inner{min-height:auto;grid-template-columns:1fr;row-gap:2rem;align-content:start;}
+      .h-back,.h-eye,.h-title,.h-meta,.h-mockup{grid-column:1;}
+      .h-mockup{grid-row:auto;justify-self:start;width:min(100%,320px);}
+      .h-meta{grid-template-columns:1fr 1fr;}
+      .tc{grid-template-columns:1fr;gap:3.5rem;}
+    }
+    @media(max-width:640px){
+      .wrap,.nav-inner,.footer-inner{padding:0 1.25rem;}
+      .hero{padding-top:6rem;padding-bottom:3.5rem;}
+      .h-title{font-size:clamp(3rem,20vw,5rem);}
+      .h-meta{grid-template-columns:1fr;gap:1rem;}
+      .stats-g{grid-template-columns:repeat(2,1fr);}
+      .stat{border-bottom:1px solid var(--brd);border-right:none;}
+      .stat:nth-child(odd){border-right:1px solid var(--brd);}
+      .ctai{grid-template-columns:1fr;}
+      .nlinks{display:none;}
+    }
+  </style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <div class="nav-inner">
+    <a href="index.html" class="nlogo">Doha<span>.</span></a>
+    <ul class="nlinks">
+      <li><a href="index.html">Accueil</a></li>
+      <li><a href="about.html">À propos</a></li>
+      <li><a href="index.html#projects">Projets</a></li>
+      <li><a href="contact.html">Contact</a></li>
+    </ul>
+  </div>
+</nav>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="h-glow"></div>
+  <div class="h-dots"></div>
+  <div class="wrap h-inner">
+    <div class="h-mockup">
+      <img src="haven.png" alt="Haven mockup">
+    </div>
+    <a href="index.html#projects" class="h-back">
+      <svg width="14" height="14" viewBox="0 0 14 14" fill="none"><path d="M9 2L4 7l5 5" stroke="currentColor" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+      Retour aux projets
+    </a>
+    <span class="h-eye">Case Study · UX/UI Design</span>
+    <h1 class="h-title">Hav<em>en</em></h1>
+    <div class="h-meta">
+      <div class="h-mi"><span class="h-ml">Rôle</span><span class="h-mv">Designer &amp; Chercheuse UX</span></div>
+      <div class="h-mi"><span class="h-ml">Type</span><span class="h-mv">Projet Freelance</span></div>
+      <div class="h-mi"><span class="h-ml">Domaine</span><span class="h-mv">Santé &amp; Bien-être</span></div>
+      <div class="h-mi"><span class="h-ml">Plateforme</span><span class="h-mv">iOS / Android</span></div>
+      <div class="h-mi"><span class="h-ml">Outils</span><span class="h-mv">Figma · FigJam · Maze</span></div>
+    </div>
+  </div>
+</section>
+
+<!-- STATS -->
+<div class="stats">
+  <div class="wrap">
+    <div class="stats-g">
+      <div class="stat f"><div class="sn">12</div><div class="sl">Entretiens<br>utilisateurs</div></div>
+      <div class="stat f d1"><div class="sn">3</div><div class="sl">Rounds de<br>tests</div></div>
+      <div class="stat f d2"><div class="sn">5</div><div class="sl">Fonctionnalités<br>livrées</div></div>
+      <div class="stat f d3"><div class="sn">8</div><div class="sl">Semaines<br>de conception</div></div>
+    </div>
+  </div>
+</div>
+
+<!-- 01 — USER PROBLEM -->
+<section class="sec a">
+  <div class="wrap">
+    <div class="f">
+      <span class="lbl">01 — User Problem</span>
+      <h2 class="ttl">User <em>Problem</em></h2>
+      <p class="bdy">Une approche UX centrée sur l'humain, menée avec 14 utilisateurs sur 9 semaines — pour concevoir une expérience digitale calme, intuitive et thérapeutique.</p>
+    </div>
+    <div class="dt-wrap f">
+      <img src="user probleme.png" alt="User Problem">
+    </div>
+  </div>
+</section>
+
+<!-- 02 — DESIGN THINKING -->
+<section class="sec a">
+  <div class="wrap">
+    <div class="f">
+      <span class="lbl">02 — Méthodologie</span>
+      <h2 class="ttl">Design <em>Thinking</em></h2>
+      <p class="bdy">5 phases menées sur 9 semaines, ancrées dans l'écoute de 14 utilisateurs — de l'empathie à la validation par les tests.</p>
+    </div>
+    <div class="dt-wrap f">
+      <img src="design thinking.png" alt="Design Thinking">
+    </div>
+  </div>
+</section>
+
+<!-- 03 — PERSONA -->
+<section class="sec b">
+  <div class="wrap">
+    <div class="f">
+      <span class="lbl">03 — Persona Primaire</span>
+      <h2 class="ttl">Rencontrer <em>Sarah</em></h2>
+      <p class="bdy">Un profil central a émergé des 12 entretiens. Camille représente 70 % des participants — cadre active, consciente de ses troubles, mais bloquée par la complexité des solutions disponibles.</p>
+    </div>
+    <div class="persona-img-wrap f">
+      <img src="user persona.png" alt="User Persona">
+    </div>
+  </div>
+</section>
+
+<!-- 04 — USER FLOW -->
+<section class="sec b">
+  <div class="wrap">
+    <div class="f">
+      <span class="lbl">04 — User Flow</span>
+      <h2 class="ttl">Parcours <em>Utilisateur</em></h2>
+      <p class="bdy">Le parcours utilisateur de Haven a été pensé pour offrir une navigation intuitive et rassurante. Chaque étape permet aux utilisateurs d'accéder rapidement aux services adaptés à leurs besoins émotionnels, tout en favorisant une expérience calme, accessible et centrée sur le bien-être mental.</p>
+    </div>
+    <div class="persona-img-wrap f">
+      <img src="user flow.png" alt="User Flow">
+    </div>
+  </div>
+</section>
+
+<!-- 05 — INSIGHTS -->
+<section class="sec">
+  <div class="wrap">
+    <div class="f">
+      <span class="lbl">05 — Résultats de Recherche</span>
+      <h2 class="ttl">Ce que j'ai <em>découvert</em></h2>
+      <p class="bdy">6 insights clés extraits de 14 entretiens utilisateurs, 5 questionnaires et une analyse de 6 plateformes de santé mentale.</p>
+    </div>
+    <div class="f ins-para">
+      <p>Les recherches ont montré que les utilisateurs recherchent une expérience simple, apaisante et facile à utiliser. La plupart préfèrent des activités rapides comme la méditation ou les exercices de respiration, ainsi qu'un accès clair aux services et aux spécialistes.
+
+Les utilisateurs accordent également beaucoup d'importance à une interface rassurante, des recommandations personnalisées et des fonctionnalités comme le journaling et la musique relaxante pour améliorer leur bien-être au quotidien.</p>
+    </div>
+  </div>
+</section>
+
+<!-- 06 — STYLE GUIDE -->
+<section class="sec b" style="background: var(--bg3);">
+  <div class="wrap">
+    <div class="f" style="margin-bottom:2.5rem;">
+      <span class="lbl">06 — Identité Visuelle</span>
+      <h2 class="ttl">Style <em>Guide</em></h2>
+    </div>
+    <div class="f sg-img-wrap">
+      <img src="Wireframe - haven.png" alt="Style Guide">
+    </div>
+  </div>
+</section>
+
+<!-- 07 — MAQUETTES FINALES -->
+<section class="sec c">
+  <div class="wrap">
+    <div class="f">
+      <span class="lbl">07 — Maquettes Finales</span>
+      <h2 class="ttl">L'interface <em>livrée</em></h2>
+      <p class="bdy">Les maquettes haute-fidélité — l'aboutissement de 8 semaines de recherche, d'itérations et de tests utilisateurs.</p>
+    </div>
+    <div class="scr-wrap f">
+      <img src="maquette finale.png" alt="Maquettes Finales">
+    </div>
+  </div>
+</section>
+
+<!-- 08 — DÉCISIONS -->
+<section class="sec a">
+  <div class="wrap">
+    <div class="tc">
+      <div class="f">
+        <span class="lbl">08 — Décisions de Design</span>
+        <h2 class="ttl">Les choix qui <em>comptent</em></h2>
+        <p class="bdy">5 décisions de design prises à partir des besoins utilisateurs afin de créer une expérience plus simple, calme et intuitive.</p>
+      </div>
+      <div class="decs f d1">
+        <div class="dec"><div class="dn">01</div><div><div class="dt_">Palette douce et apaisante</div><div class="dd">Des couleurs calmes et modernes ont été utilisées pour créer une atmosphère relaxante et rassurante.</div></div></div>
+        <div class="dec"><div class="dn">02</div><div><div class="dt_">Navigation simple et intuitive</div><div class="dd">Une structure claire permettant aux utilisateurs d'accéder rapidement aux services essentiels sans confusion.</div></div></div>
+        <div class="dec"><div class="dn">03</div><div><div class="dt_">Expérience centrée sur le bien-être</div><div class="dd">Les fonctionnalités principales comme la méditation, le yoga et le journaling ont été mises en avant pour encourager une utilisation quotidienne.</div></div></div>
+        <div class="dec"><div class="dn">04</div><div><div class="dt_">Interface minimaliste</div><div class="dd">Un design épuré réduit la surcharge visuelle et améliore l'accessibilité pour tous les utilisateurs.</div></div></div>
+        <div class="dec"><div class="dn">05</div><div><div class="dt_">Feedback positif et motivation</div><div class="dd">Des interactions douces et des messages encourageants renforcent l'engagement et créent une expérience plus humaine.</div></div></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 09 — CONCLUSION -->
+<section class="sec b">
+  <div class="wrap">
+    <div class="f" style="margin-bottom:2.5rem;">
+      <span class="lbl">09 — Leçons &amp; Rétrospective</span>
+      <h2 class="ttl">Ce que ce projet<br>m'a <em>appris</em></h2>
+    </div>
+    <div class="f learning-para">
+      <p>Concevoir Haven m'a appris que l'expérience utilisateur va bien au-delà du design visuel. Comprendre les émotions, les besoins et les habitudes des utilisateurs a été essentiel pour créer une plateforme de santé mentale simple et rassurante.
+
+Ce projet m'a également montré que la simplicité demande beaucoup de réflexion : chaque fonctionnalité devait être claire, utile et facile d'accès. J'ai compris qu'une interface apaisante, des interactions douces et une navigation intuitive peuvent avoir un réel impact sur l'engagement et le bien-être des utilisateurs.
+
+Enfin, les retours utilisateurs et les tests m'ont aidé à améliorer continuellement l'expérience et à concevoir des solutions plus humaines, accessibles et centrées sur l'empathie.</p>
+    </div>
+  </div>
+</section>
+
+<!-- CTA -->
+<section class="cta sec">
+  <div class="wrap">
+    <div class="ctai f">
+      <div>
+        <div class="ctal">Projet suivant</div>
+        <h2 class="ctat">Voir d'autres<br><em>case studies</em></h2>
+      </div>
+      <div class="btns">
+        <a href="index.html#projects" class="bp">Tous les projets →</a>
+        <a href="contact.html" class="bo">Me contacter</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer class="footer-new">
+  <div class="footer-inner">
+    <span class="footer-logo-big">Doha<span>.</span></span>
+    <span class="fc">© 2026 — UX/UI Designer</span>
+    <span class="fc">Charleville-Mézières, FR</span>
+  </div>
+</footer>
+
+<script>
+  const els = document.querySelectorAll('.f');
+  const obs = new IntersectionObserver(entries => {
+    entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('v'); obs.unobserve(e.target); } });
+  }, { threshold: 0.07 });
+  els.forEach(el => obs.observe(el));
+</script>
+</body>
+</html>

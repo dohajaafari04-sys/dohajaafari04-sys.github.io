@@ -1,0 +1,914 @@
+﻿<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Sleepie â€” Case Study Â· Doha Jaafari</title>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,700;0,900;1,400&family=DM+Sans:wght@300;400;500&family=Space+Mono&display=swap" rel="stylesheet">
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --bg:      #0a0a0a;
+      --bg2:     #0f0f0f;
+      --bg3:     #141414;
+      --surf:    #181818;
+      --brd:     rgba(255,255,255,0.07);
+      --brd-h:   rgba(255,255,255,0.14);
+      --txt:     #f0ede8;
+      --muted:   rgba(240,237,232,0.45);
+      --dim:     rgba(240,237,232,0.2);
+      --acc:     #F29FC2;
+      --acc2:    #F29FC2;
+      --mono:    'Space Mono', monospace;
+      --disp:    'Playfair Display', serif;
+      --body:    'DM Sans', sans-serif;
+      --r:       12px;
+      --rl:      20px;
+    }
+
+    html { scroll-behavior: smooth; }
+    body { font-family: var(--body); background: var(--bg); color: var(--txt); overflow-x: hidden; }
+    a { color: inherit; text-decoration: none; }
+    img { max-width: 100%; display: block; }
+    .wrap { max-width: 980px; width: 100%; margin: 0 auto; padding: 0 2.5rem; }
+    nav, .hero, .stats, .sec, .cta, footer, .footer-new { width: 100%; box-sizing: border-box; }
+
+    /* NAV */
+    nav {
+      position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+      padding: 1.2rem 0;
+      display: flex; justify-content: center; align-items: center;
+      background: rgba(10,10,10,0.88); backdrop-filter: blur(18px);
+      border-bottom: 1px solid var(--brd);
+    }
+    .nav-inner {
+      max-width: 980px; width: 100%; padding: 0 2.5rem;
+      display: flex; justify-content: space-between; align-items: center;
+    }
+    .nlogo { font-family: var(--disp); font-size: 1.2rem; font-weight: 700; }
+    .nlogo span { color: var(--acc2); }
+    .nlinks { display: flex; gap: 2rem; list-style: none; }
+    .nlinks a { font-size: .78rem; color: var(--muted); transition: color .2s; }
+    .nlinks a:hover { color: var(--txt); }
+
+    /* HERO */
+    .hero {
+      min-height: 100vh; padding-top: 6.5rem; padding-bottom: 4.5rem;
+      background: var(--bg); position: relative; overflow: hidden;
+    }
+    .h-glow {
+      position: absolute; inset: 0; pointer-events: none;
+      background:
+        radial-gradient(ellipse 60% 50% at 22% 65%, rgba(201,184,232,0.09) 0%, transparent 70%),
+        radial-gradient(ellipse 40% 38% at 74% 36%, rgba(244,167,185,0.06) 0%, transparent 60%);
+    }
+    .h-dots {
+      position: absolute; inset: 0; pointer-events: none;
+      background-image: radial-gradient(rgba(255,255,255,0.035) 1px, transparent 1px);
+      background-size: 30px 30px;
+      mask-image: radial-gradient(ellipse 80% 80% at 38% 52%, black 10%, transparent 80%);
+    }
+    .h-inner {
+      position: relative;
+      z-index: 2;
+      min-height: calc(100vh - 11rem);
+      display: grid;
+      grid-template-columns: minmax(0, 1fr) clamp(240px, 30vw, 360px);
+      column-gap: clamp(2rem, 5vw, 5rem);
+      row-gap: 1.5rem;
+      align-items: center;
+      align-content: center;
+    }
+    .h-back {
+      display: inline-flex; align-items: center; gap: .5rem;
+      font-family: var(--mono); font-size: .56rem; letter-spacing: .12em; text-transform: uppercase;
+      color: var(--dim); margin-bottom: 3.5rem; transition: color .2s;
+      grid-column: 1;
+    }
+    .h-back:hover { color: var(--acc); }
+    .h-back:hover svg { transform: translateX(-3px); }
+    .h-back svg { transition: transform .2s; }
+    .h-eye { font-family: var(--mono); font-size: .56rem; letter-spacing: .18em; color: var(--acc); text-transform: uppercase; margin-bottom: 1.8rem; display: block; grid-column: 1; }
+    .h-title { font-family: var(--disp); font-size: clamp(4rem,12vw,9rem); font-weight: 900; line-height: .85; letter-spacing: -.04em; color: var(--txt); margin-bottom: 1.5rem; grid-column: 1; }
+    .h-title em { color: var(--acc2); font-style: italic; }
+    .h-mockup {
+      position: relative;
+      grid-column: 2;
+      grid-row: 1 / span 4;
+      width: min(100%, 360px);
+      justify-self: end;
+      align-self: center;
+      z-index: 3; pointer-events: none;
+    }
+    .h-mockup img { width: 100%; filter: drop-shadow(0 40px 120px rgba(201,184,232,0.18)); }
+    .h-meta {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 1.5rem 2.5rem;
+      padding-top: 2rem;
+      border-top: 1px solid var(--brd);
+      grid-column: 1;
+      max-width: 100%;
+    }
+    .h-mi { display: flex; flex-direction: column; gap: .3rem; }
+    .h-ml { font-family: var(--mono); font-size: .48rem; letter-spacing: .14em; text-transform: uppercase; color: var(--dim); }
+    .h-mv { font-size: .8rem; color: var(--muted); }
+
+    /* STATS */
+    .stats { background: var(--surf); border-top: 1px solid var(--brd); border-bottom: 1px solid var(--brd); padding: 2.5rem 0; }
+    .stats-g { display: grid; grid-template-columns: repeat(4,1fr); }
+    .stat { padding: 0 2rem; border-right: 1px solid var(--brd); text-align: center; }
+    .stat:last-child { border-right: none; }
+    .sn { font-family: var(--disp); font-size: 2.5rem; font-weight: 900; color: var(--acc); letter-spacing: -.03em; line-height: 1; margin-bottom: .4rem; }
+    .sl { font-family: var(--mono); font-size: .48rem; letter-spacing: .1em; text-transform: uppercase; color: var(--dim); line-height: 1.6; }
+
+    /* SECTIONS */
+    .sec { padding: 6rem 0; border-bottom: 1px solid var(--brd); }
+    .sec.a { background: var(--bg2); }
+    .sec.b { background: var(--bg3); }
+    .sec.c { background: #050505; }
+
+    .lbl { font-family: var(--mono); font-size: .52rem; letter-spacing: .18em; text-transform: uppercase; color: var(--acc); margin-bottom: .8rem; display: block; }
+    .ttl { font-family: var(--disp); font-size: clamp(1.8rem,4vw,2.8rem); font-weight: 700; letter-spacing: -.02em; line-height: 1.1; margin-bottom: 1.2rem; color: var(--txt); }
+    .ttl em { color: var(--acc2); font-style: italic; }
+    .bdy { font-size: .87rem; color: var(--muted); line-height: 1.85; max-width: 580px; }
+
+    /* 2 COL */
+    .tc { display: grid; grid-template-columns: 1fr 1fr; gap: 5rem; align-items: start; }
+
+    /* OVERVIEW */
+    .ovg { display: grid; grid-template-columns: 1fr 1fr; gap: 1px; background: var(--brd); border: 1px solid var(--brd); border-radius: var(--rl); overflow: hidden; margin-top: 2.5rem; }
+    .ovc { background: var(--surf); padding: 1.8rem; }
+    .ovc .ol { font-family: var(--mono); font-size: .48rem; letter-spacing: .14em; text-transform: uppercase; color: var(--dim); margin-bottom: .8rem; display: block; }
+    .ovc p { font-size: .83rem; color: var(--muted); line-height: 1.75; }
+    .ovc .q { font-family: var(--disp); font-size: .98rem; font-style: italic; color: var(--txt); border-left: 2px solid var(--acc2); padding-left: 1.2rem; line-height: 1.65; }
+    .ovc.sp { grid-column: span 2; }
+
+    /* DT IMAGE */
+    .dt-wrap { margin-top: 3rem; border-radius: var(--rl); overflow: hidden; border: 1px solid var(--brd); background: transparent; }
+    .dt-wrap img { width: 100%; display: block; }
+
+    /* PERSONA */
+    .persona { border: 1px solid var(--brd); border-radius: var(--rl); overflow: hidden; margin-top: 2.5rem; }
+    .ph { padding: 2rem 2.5rem; border-bottom: 1px solid var(--brd); display: grid; grid-template-columns: auto 1fr auto; gap: 1.5rem; align-items: center; background: linear-gradient(135deg,rgba(244,167,185,0.055),rgba(201,184,232,0.04)); }
+    .pav { width: 52px; height: 52px; border-radius: 50%; background: linear-gradient(135deg,#f4a7b9,#c9b8e8); display: flex; align-items: center; justify-content: center; font-family: var(--disp); font-size: 1.2rem; font-weight: 900; color: #fff; }
+    .pname { font-family: var(--disp); font-size: 1.2rem; font-weight: 700; color: var(--txt); margin-bottom: .2rem; }
+    .prole { font-size: .76rem; color: var(--muted); }
+    .psv { font-family: var(--disp); font-size: 1.8rem; font-weight: 900; color: var(--acc); line-height: 1; }
+    .psl { font-family: var(--mono); font-size: .44rem; letter-spacing: .1em; text-transform: uppercase; color: var(--dim); margin-top: .2rem; }
+    .pb { display: grid; grid-template-columns: 1fr 1fr 1fr; }
+    .pc { padding: 1.5rem 1.8rem; border-right: 1px solid var(--brd); }
+    .pc:last-child { border-right: none; }
+    .pcl { font-family: var(--mono); font-size: .46rem; letter-spacing: .14em; text-transform: uppercase; color: var(--acc); display: block; margin-bottom: 1rem; padding-bottom: .7rem; border-bottom: 1px solid var(--brd); }
+    .plist { list-style: none; display: flex; flex-direction: column; gap: .5rem; }
+    .plist li { font-size: .74rem; color: var(--muted); line-height: 1.6; padding-left: 1rem; position: relative; }
+    .plist li::before { content: ''; position: absolute; left: 0; top: .5rem; width: 4px; height: 4px; border-radius: 50%; background: var(--acc2); }
+    .pq { padding: 1.5rem 2.5rem; border-top: 1px solid var(--brd); background: var(--bg3); display: grid; grid-template-columns: 2px 1fr; gap: 1.2rem; }
+    .pqb { background: linear-gradient(180deg,#f4a7b9,#c9b8e8); border-radius: 2px; }
+    .pq p { font-family: var(--disp); font-size: .86rem; font-style: italic; color: var(--muted); line-height: 1.75; }
+    .pq cite { display: block; margin-top: .4rem; font-family: var(--mono); font-size: .44rem; letter-spacing: .1em; text-transform: uppercase; color: var(--dim); font-style: normal; }
+
+    /* INSIGHTS */
+    .ins { margin-top: 2.5rem; border: 1px solid var(--brd); border-radius: var(--rl); overflow: hidden; }
+    .ir { background: var(--surf); padding: 1.7rem 2rem; display: grid; grid-template-columns: 2.5rem 1fr 2.2fr; gap: 1.5rem; align-items: start; border-bottom: 1px solid var(--brd); transition: background .2s; }
+    .ir:last-child { border-bottom: none; }
+    .ir:hover { background: var(--bg3); }
+    .in_ { font-family: var(--disp); font-size: 1.7rem; font-weight: 900; color: var(--brd); letter-spacing: -.04em; line-height: 1; }
+    .it { font-size: .82rem; font-weight: 500; color: var(--txt); line-height: 1.4; }
+    .ib { font-size: .74rem; color: var(--muted); line-height: 1.75; }
+    .ii { margin-top: .5rem; font-family: var(--mono); font-size: .5rem; letter-spacing: .08em; color: var(--acc2); }
+
+    /* WIREFRAME */
+    .wf-wrap { margin-top: 3rem; border-radius: var(--rl); overflow: hidden; border: 1px solid var(--brd); background: transparent; }
+    .wf-wrap img { width: 100%; display: block; opacity: .9; mix-blend-mode: lighten; }
+
+    /* STYLE GUIDE CARD */
+    .sg-card {
+      background: #f5f6fa;
+      border-radius: 24px;
+      padding: 2.5rem 2.5rem 2rem;
+      color: #31446C;
+      overflow: hidden;
+    }
+    .sg-top {
+      display: grid;
+      grid-template-columns: 1fr auto;
+      gap: 2rem;
+      align-items: flex-start;
+      margin-bottom: 2rem;
+    }
+    .sg-sparkles { margin-bottom: 0.5rem; }
+    .sg-title-big { margin-bottom: 1.2rem; }
+    .sg-word {
+      font-family: 'Overpass', 'DM Sans', sans-serif;
+      font-size: clamp(2.8rem, 6vw, 4.5rem);
+      font-weight: 900;
+      color: transparent;
+      -webkit-text-stroke: 2px #7996CE;
+      letter-spacing: 0.04em;
+      line-height: 1;
+      display: block;
+    }
+    .sg-desc {
+      font-size: 0.82rem;
+      color: #31446C;
+      font-weight: 600;
+      line-height: 1.65;
+      max-width: 440px;
+      margin-bottom: 1.5rem;
+    }
+    .sg-font-row {
+      display: flex;
+      align-items: center;
+      gap: 1.5rem;
+    }
+    .sg-font-label {
+      font-size: 0.85rem;
+      color: #888;
+      font-family: 'DM Sans', sans-serif;
+    }
+    .sg-aa {
+      font-family: var(--disp);
+      font-size: 2.2rem;
+      font-weight: 900;
+      color: transparent;
+      -webkit-text-stroke: 1.5px #7996CE;
+      line-height: 1;
+    }
+    .sg-white-chip {
+      background: white;
+      border: 1px solid #e0e0e0;
+      border-radius: 8px;
+      padding: 0.25rem 0.7rem;
+      font-family: var(--mono);
+      font-size: 0.65rem;
+      color: #888;
+    }
+    .sg-brain-col {
+      display: flex;
+      align-items: flex-end;
+      justify-content: center;
+      width: 200px;
+    }
+    .sg-brain-svg {
+      width: 180px;
+      height: auto;
+    }
+    /* Swatches grid matching reference */
+    .sg-swatches-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr 1.2fr;
+      grid-template-rows: 100px 100px;
+      gap: 0.7rem;
+    }
+    .sg-swatch {
+      border-radius: 14px;
+      display: flex;
+      align-items: flex-end;
+      padding: 0.6rem 0.8rem;
+      position: relative;
+    }
+    .sg-swatch-tall { grid-row: span 2; border-radius: 20px; }
+    .sg-swatch-lg { grid-row: span 2; border-radius: 20px; }
+    .sg-sw-label {
+      font-family: var(--mono);
+      font-size: 0.62rem;
+      letter-spacing: 0.04em;
+      position: absolute;
+      bottom: 0.6rem;
+      left: 0.8rem;
+    }
+    .sg-sw-label.light { color: rgba(255,255,255,0.8); }
+    .sg-sw-label.dark { color: rgba(0,0,0,0.45); }
+
+
+
+
+    /* STYLE GUIDE IMAGE WRAPPER */
+    .sg-img-wrap {
+      margin-top: 2rem;
+      border-radius: 20px;
+      overflow: hidden;
+    }
+    .sg-img-wrap img {
+      border-radius: 20px;
+      box-shadow: 0 8px 40px rgba(0,0,0,0.3);
+    }
+
+    /* SCREENS */
+    .scr-wrap { margin-top: 3rem; border-radius: var(--rl); overflow: hidden; border: 1px solid var(--brd); background: transparent; }
+    .scr-wrap img { width: 100%; display: block; mix-blend-mode: lighten; }
+
+    /* DECISIONS */
+    .decs { display: flex; flex-direction: column; gap: 1.5rem; margin-top: 2rem; }
+    .dec { display: grid; grid-template-columns: 2.5rem 1fr; gap: 1.5rem; align-items: start; }
+    .dn { font-family: var(--disp); font-size: 2rem; font-weight: 900; color: var(--brd); line-height: 1; text-align: right; }
+    .dt_ { font-size: .84rem; font-weight: 500; color: var(--txt); margin-bottom: .35rem; }
+    .dd { font-size: .74rem; color: var(--muted); line-height: 1.75; }
+
+    /* LEARNINGS */
+    .lrng { display: grid; grid-template-columns: 1fr 1fr; gap: 1.2rem; margin-top: 2.5rem; }
+    .lc { border: 1px solid var(--brd); border-radius: 14px; padding: 1.8rem; background: var(--surf); transition: border-color .3s; }
+    .lc:hover { border-color: var(--brd-h); }
+    .li_ { font-size: 1.2rem; margin-bottom: .8rem; display: block; }
+    .lt { font-size: .84rem; font-weight: 500; color: var(--txt); margin-bottom: .4rem; }
+    .ld { font-size: .74rem; color: var(--muted); line-height: 1.75; }
+
+    /* LEARNING PARAGRAPH */
+    .learning-para {
+      max-width: 640px;
+      border-left: 2px solid var(--acc2);
+      padding-left: 2rem;
+    }
+    .learning-para p {
+      font-size: .96rem;
+      color: var(--muted);
+      line-height: 2;
+      font-style: italic;
+    }
+
+    /* INSIGHTS DIAGRAM */
+    .insights-diagram {
+      position: relative;
+      width: 100%;
+      height: 520px;
+      margin-top: 3rem;
+    }
+    .ins-lines {
+      position: absolute;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+      pointer-events: none;
+    }
+    .ins-center {
+      position: absolute;
+      left: 50%;
+      top: 50%;
+      transform: translate(-50%, -50%);
+      width: 110px;
+      height: 110px;
+      border-radius: 50%;
+      background: linear-gradient(135deg, rgba(201,184,232,0.2), rgba(244,167,185,0.15));
+      border: 1px solid rgba(201,184,232,0.3);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      z-index: 2;
+    }
+    .ins-center-label {
+      font-family: var(--mono);
+      font-size: .38rem;
+      letter-spacing: .08em;
+      color: var(--dim);
+      text-transform: uppercase;
+      line-height: 1.8;
+      margin-top: .4rem;
+    }
+    .ins-node {
+      position: absolute;
+      width: 185px;
+      border: 1px solid var(--brd);
+      border-radius: 14px;
+      background: var(--surf);
+      padding: 1.1rem 1.2rem;
+      transition: border-color .3s, background .3s;
+      z-index: 2;
+    }
+    .ins-node:hover { border-color: var(--brd-h); background: var(--bg3); }
+    .ins-num {
+      font-family: var(--disp);
+      font-size: 1.4rem;
+      font-weight: 900;
+      color: var(--acc);
+      line-height: 1;
+      margin-bottom: .5rem;
+      opacity: 0.6;
+    }
+    .ins-text {
+      font-size: .74rem;
+      font-weight: 500;
+      color: var(--txt);
+      line-height: 1.5;
+      margin-bottom: .4rem;
+    }
+    .ins-action {
+      font-family: var(--mono);
+      font-size: .44rem;
+      letter-spacing: .06em;
+      color: var(--acc2);
+    }
+    /* Position each node */
+    .ins-node-1 { left: calc(50% - 385px); top: 20px; }
+    .ins-node-2 { left: calc(50% + 200px); top: 20px; }
+    .ins-node-3 { left: calc(50% - 440px); top: calc(50% - 65px); }
+    .ins-node-4 { left: calc(50% + 255px); top: calc(50% - 65px); }
+    .ins-node-5 { left: calc(50% - 385px); bottom: 20px; }
+    .ins-node-6 { left: calc(50% + 200px); bottom: 20px; }
+
+    @media(max-width: 900px) {
+      .insights-diagram { height: auto; }
+      .ins-lines { display: none; }
+      .ins-center { display: none; }
+      .ins-node { position: static; width: auto; margin-bottom: .8rem; }
+    }
+
+
+    /* CTA */
+    .cta { padding: 7rem 0; border-bottom: none; }
+    .ctai { display: grid; grid-template-columns: 1fr auto; gap: 4rem; align-items: center; }
+    .ctal { font-family: var(--mono); font-size: .5rem; letter-spacing: .14em; text-transform: uppercase; color: var(--dim); margin-bottom: .8rem; }
+    .ctat { font-family: var(--disp); font-size: clamp(2rem,4vw,3rem); font-weight: 700; letter-spacing: -.02em; line-height: 1.1; color: var(--txt); }
+    .ctat em { color: var(--acc2); font-style: italic; }
+    .btns { display: flex; gap: 1rem; flex-wrap: wrap; }
+    .bp { background: linear-gradient(135deg,#c9b8e8,#f4a7b9); color: #1a0f2e; padding: .9rem 1.8rem; border-radius: 100px; font-size: .78rem; font-weight: 600; transition: opacity .2s; }
+    .bp:hover { opacity: .88; }
+    .bo { border: 1px solid var(--brd); color: var(--muted); padding: .9rem 1.8rem; border-radius: 100px; font-size: .78rem; transition: all .2s; }
+    .bo:hover { border-color: var(--brd-h); color: var(--txt); }
+
+
+    /* INS PARAGRAPH */
+    .ins-para {
+      margin-top: 2rem;
+      border-left: 2px solid rgba(201,184,232,0.4);
+      padding-left: 2rem;
+      max-width: 680px;
+    }
+    .ins-para p {
+      font-size: .92rem;
+      color: var(--muted);
+      line-height: 2;
+    }
+    /* FOOTER */
+    footer{width:100vw;background:var(--surf);border-top:1px solid var(--brd);padding:3.5rem 2.5rem;}
+    .footer-inner{max-width:980px;margin:0 auto;display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:1.5rem;}
+    .footer-logo{font-family:var(--disp);font-size:1.5rem;font-weight:700;color:var(--txt);}
+    .footer-logo span{color:var(--acc);}
+    .footer-right{display:flex;flex-direction:column;gap:.4rem;align-items:flex-end;}
+    .footer-copy,.footer-made{font-family:var(--mono);font-size:.48rem;letter-spacing:.1em;text-transform:uppercase;color:var(--dim);}
+
+
+    
+    /* FADE */
+    .f { opacity: 0; transform: translateY(26px); transition: opacity .65s ease, transform .65s ease; }
+    .f.v { opacity: 1; transform: none; }
+    .f.d1 { transition-delay: .1s; }
+    .f.d2 { transition-delay: .2s; }
+    .f.d3 { transition-delay: .3s; }
+
+    /* RESPONSIVE */
+    @media(max-width:900px){
+      .wrap{padding:0 1.5rem;}
+      .h-inner{min-height:auto;grid-template-columns:1fr;row-gap:2rem;align-content:start;}
+      .h-back,.h-eye,.h-title,.h-meta,.h-mockup{grid-column:1;}
+      .h-mockup{grid-row:auto;justify-self:start;width:min(100%,320px);}
+      .h-meta{grid-template-columns:1fr 1fr;}
+      .tc{grid-template-columns:1fr;gap:3.5rem;}
+      .pb{grid-template-columns:1fr 1fr;}
+      .ph{grid-template-columns:auto 1fr;}
+      .psv,.psl{display:none;}
+    }
+    @media(max-width:640px){
+      .wrap,.nav-inner,.footer-inner{padding:0 1.25rem;}
+      .hero{padding-top:6rem;padding-bottom:3.5rem;}
+      .h-title{font-size:clamp(3rem,20vw,5rem);}
+      .h-meta{grid-template-columns:1fr;gap:1rem;}
+      .stats-g{grid-template-columns:repeat(2,1fr);}
+      .stat{border-bottom:1px solid var(--brd);border-right:none;}
+      .stat:nth-child(odd){border-right:1px solid var(--brd);}
+      .pb{grid-template-columns:1fr;}
+      .pc{border-right:none;border-bottom:1px solid var(--brd);}
+      .ir{grid-template-columns:2rem 1fr;}.ib{display:none;}
+      .lrng{grid-template-columns:1fr;}
+      .sg-sw{grid-template-columns:repeat(2,1fr);}
+      .ctai{grid-template-columns:1fr;}
+      .nlinks{display:none;}
+    }
+    /* Image fallbacks (assets non importÃ©s) */
+    .img-fallback {
+      width: 100%;
+      aspect-ratio: 16 / 10;
+      border-radius: var(--rl);
+      background:
+        radial-gradient(ellipse at 30% 20%, rgba(201,184,232,0.22), transparent 60%),
+        radial-gradient(ellipse at 80% 80%, rgba(244,167,185,0.18), transparent 60%),
+        linear-gradient(135deg, #1a1530 0%, #2a1a35 100%);
+      border: 1px solid var(--brd);
+      display: flex; align-items: center; justify-content: center;
+      font-family: var(--mono); font-size: .72rem; letter-spacing: .18em;
+      text-transform: uppercase; color: var(--muted);
+    }
+    .mockup-fb { aspect-ratio: 3 / 4; max-width: 360px; }
+    .h-mockup .img-fallback { filter: drop-shadow(0 40px 120px rgba(201,184,232,0.18)); }
+    
+</style>
+<style id="shared-nav-footer-style">
+  .site-nav {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    z-index: 1000;
+    padding: 1.2rem 3rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background: rgba(10, 10, 10, 0.92);
+    backdrop-filter: blur(20px);
+    border-bottom: 1px solid rgba(255, 255, 255, 0.07);
+    box-sizing: border-box;
+    transition: padding .3s ease, background .3s ease;
+  }
+  .site-nav.scrolled { padding: .9rem 3rem; background: rgba(10, 10, 10, 0.96); }
+  .site-nav-logo {
+    font-family: var(--disp, 'Playfair Display', serif);
+    font-size: 1.3rem;
+    font-weight: 700;
+    color: var(--txt, #f0ede8);
+    text-decoration: none;
+  }
+  .site-nav-logo span { color: var(--acc2, var(--acc, #f4a7b9)); }
+  .site-nav-links {
+    list-style: none;
+    display: flex;
+    gap: 2.2rem;
+    align-items: center;
+    margin: 0;
+    padding: 0;
+  }
+  .site-nav-links a {
+    font-family: var(--mono, 'Space Mono', monospace);
+    font-size: .58rem;
+    letter-spacing: .12em;
+    text-transform: uppercase;
+    color: var(--muted, rgba(240,237,232,0.45));
+    text-decoration: none;
+    position: relative;
+    transition: color .2s ease;
+  }
+  .site-nav-links a::after {
+    content: '';
+    position: absolute;
+    left: 0;
+    bottom: -5px;
+    width: 0;
+    height: 1px;
+    background: var(--acc, #c9b8e8);
+    transition: width .25s ease;
+  }
+  .site-nav-links a:hover,
+  .site-nav-links a.active { color: var(--txt, #f0ede8); }
+  .site-nav-links a:hover::after,
+  .site-nav-links a.active::after { width: 100%; }
+  .site-nav-toggle {
+    display: none;
+    flex-direction: column;
+    gap: 5px;
+    width: 34px;
+    height: 34px;
+    align-items: center;
+    justify-content: center;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 8px;
+    background: transparent;
+    cursor: pointer;
+  }
+  .site-nav-toggle span {
+    display: block;
+    width: 18px;
+    height: 1px;
+    background: var(--txt, #f0ede8);
+    transition: transform .25s ease;
+  }
+  .site-mobile-menu {
+    position: fixed;
+    inset: 0;
+    z-index: 999;
+    background: rgba(10, 10, 10, .97);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 1.8rem;
+    transform: translateX(100%);
+    transition: transform .35s cubic-bezier(.22,1,.36,1);
+  }
+  .site-mobile-menu.open { transform: none; }
+  .site-mobile-menu a {
+    font-family: var(--disp, 'Playfair Display', serif);
+    font-size: clamp(1.8rem, 9vw, 3rem);
+    font-style: italic;
+    color: var(--muted, rgba(240,237,232,0.45));
+    text-decoration: none;
+    transition: color .2s ease;
+  }
+  .site-mobile-menu a:hover { color: var(--txt, #f0ede8); }
+  .site-footer {
+    width: 100%;
+    box-sizing: border-box;
+    background: var(--bg, #0a0a0a);
+    border-top: 1px solid rgba(255, 255, 255, 0.07);
+    padding: 2.2rem 3rem;
+  }
+  .site-footer-inner {
+    max-width: 1100px;
+    margin: 0 auto;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 1.5rem;
+  }
+  .site-footer-logo {
+    font-family: var(--disp, 'Playfair Display', serif);
+    font-size: 1.25rem;
+    font-weight: 700;
+    color: var(--txt, #f0ede8);
+  }
+  .site-footer-logo span { color: var(--acc2, var(--acc, #f4a7b9)); }
+  .site-footer-copy,
+  .site-footer-place {
+    font-family: var(--mono, 'Space Mono', monospace);
+    font-size: .54rem;
+    letter-spacing: .1em;
+    text-transform: uppercase;
+    color: var(--dim, rgba(240,237,232,0.2));
+  }
+  @media (max-width: 900px) {
+    .site-nav { padding: 1rem 1.4rem; }
+    .site-nav.scrolled { padding: .85rem 1.4rem; }
+    .site-nav-links { display: none; }
+    .site-nav-toggle { display: flex; }
+    .site-footer { padding: 2rem 1.4rem; }
+    .site-footer-inner { flex-direction: column; text-align: center; }
+  }
+</style>
+
+</head>
+<body>
+
+<!-- NAV -->
+<nav class="site-nav" id="nav">
+  <a href="index.html" class="site-nav-logo">Doha<span>.</span></a>
+  <ul class="site-nav-links">
+    <li><a href="index.html">Accueil</a></li>
+    <li><a href="index.html#projects">Projets</a></li>
+    <li><a href="index.html#skills">Compétences</a></li>
+    <li><a href="index.html#contact">Contact</a></li>
+  </ul>
+  <button class="site-nav-toggle" id="navToggle" aria-label="Ouvrir le menu" type="button">
+    <span></span><span></span>
+  </button>
+</nav>
+
+<!-- MOBILE MENU -->
+<div class="site-mobile-menu" id="mobileMenu">
+  <a href="index.html" class="mobile-link">Accueil</a>
+  <a href="index.html#projects" class="mobile-link">Projets</a>
+  <a href="index.html#skills" class="mobile-link">Compétences</a>
+  <a href="index.html#contact" class="mobile-link">Contact</a>
+</div>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="h-glow"></div>
+  <div class="h-dots"></div>
+  <div class="wrap h-inner">
+    <div class="h-mockup">
+      <img src="thrifttie.png">
+    </div>
+    <a href="index.html#projects" class="h-back">
+      <svg width="14" height="14" viewBox="0 0 14 14" fill="none"><path d="M9 2L4 7l5 5" stroke="currentColor" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+      Retour aux projets
+    </a>
+    <span class="h-eye">Case Study · UX/UI Design</span>
+    <h1 class="h-title">Thriftti<em>es</em></h1>
+    <div class="h-meta">
+      <div class="h-mi"><span class="h-ml">Rôle</span><span class="h-mv">Designer & Fondatrice</span></div>
+      <div class="h-mi"><span class="h-ml">Type</span><span class="h-mv">Projet Personnel</span></div>
+      <div class="h-mi"><span class="h-ml">Domaine</span><span class="h-mv">Mode & Seconde Main</span></div>
+      <div class="h-mi"><span class="h-ml">Plateforme</span><span class="h-mv">iOS / Android</span></div>
+      <div class="h-mi"><span class="h-ml">Outils</span><span class="h-mv">Figma · FigJam · Maze</span></div>
+    </div>
+  </div>
+</section>
+
+<!-- STATS -->
+<div class="stats">
+  <div class="wrap">
+    <div class="stats-g">
+      <div class="stat f"><div class="sn">Instagram</div><div class="sl">Boutique<br>active</div></div>
+      <div class="stat f d1"><div class="sn">TikTok</div><div class="sl">Présence<br>sociale</div></div>
+      <div class="stat f d2"><div class="sn">100%</div><div class="sl">Pièces<br>uniques</div></div>
+      <div class="stat f d3"><div class="sn">Web</div><div class="sl">Nouvelle<br>étape</div></div>
+    </div>
+  </div>
+</div>
+
+<!-- 01 – Description -->
+<section class="sec a">
+  <div class="wrap">
+    <div class="f">
+      <span class="lbl">01 – Description</span>
+      <h2 class="ttl">Why <em>I design</em></h2>
+      <p class="bdy">Thriftties est un projet qui combine ma passion pour la mode seconde main et l'UX/UI Design afin de créer une expérience d'achat moderne et simple.</p>
+    </div>
+    <div class="dt-wrap f">
+      <img src="Description.png">
+    </div>
+  </div>
+</section>
+
+<!-- 02 – OVERVIEW -->
+<section class="sec a">
+  <div class="wrap">
+    <div class="f">
+      <span class="lbl">02 – Le Problème</span>
+      <h2 class="ttl">Le <em>Problème</em></h2>
+      <p class="bdy">Gérer les commandes uniquement via Instagram et TikTok devient vite limité – messages perdus, suivi difficile, expérience client peu fluide. Thriftties avait besoin d'un site web pour centraliser et simplifier tout le processus de commande.</p>
+    </div>
+    <div class="dt-wrap f">
+      <img src="probleme.png">
+    </div>
+  </div>
+</section>
+
+<!-- 03 – PERSONA -->
+<section class="sec b">
+  <div class="wrap">
+    <div class="f">
+      <span class="lbl">03 – Persona Primaire</span>
+      <h2 class="ttl">Rencontrer <em>Sarah</em></h2>
+      <p class="bdy">Un profil type a émergé des retours clients. Sarah représente l'acheteuse principale de Thriftties – jeune femme connectée, passionnée de mode durable, qui suit la boutique sur Instagram et TikTok mais souhaite un moyen plus simple de passer commande.</p>
+    </div>
+    <div class="persona-img-wrap f">
+      <img src="persona.png">
+    </div>
+  </div>
+</section>
+
+<!-- 04 – Carte d'empathy -->
+<section class="sec b">
+  <div class="wrap">
+    <div class="f">
+      <span class="lbl">04 – Carte d'empathy</span>
+      <h2 class="ttl">Comprendre <em>Sarah</em></h2>
+      <p class="bdy">La carte d'empathie m'a permis de mieux comprendre les attentes des clientes de Thriftties : une expérience simple, rapide et rassurante pour acheter des pièces uniques en ligne.</p>
+    </div>
+    <div class="persona-img-wrap f">
+      <img src="empathy map.png">
+    </div>
+  </div>
+</section>
+
+<!-- 05 – Competitive Analysis -->
+<section class="sec b">
+  <div class="wrap">
+    <div class="f">
+      <span class="lbl">05 – Competitive Analysis</span>
+      <h2 class="ttl">Analyse <em>concurrentielle</em></h2>
+      <p class="bdy">J'ai analysé plusieurs boutiques de seconde main pour identifier leurs points forts et leurs limites afin de créer une expérience plus claire et plus fluide pour Thriftties.</p>
+    </div>
+    <div class="persona-img-wrap f">
+      <img src="competitve analytics.png">
+    </div>
+  </div>
+</section>
+
+<!-- 06 – INSIGHTS -->
+<section class="sec">
+  <div class="wrap">
+    <div class="f">
+      <span class="lbl">06 – Résultats de Recherche</span>
+      <h2 class="ttl">Ce que j'ai <em>découvert</em></h2>
+      <p class="bdy">Des insights clés tirés des retours de clientes fidèles, d'observations des interactions sur Instagram et TikTok, et d'une analyse des boutiques de seconde main en ligne.</p>
+    </div>
+    <div class="f ins-para">
+      <p>Les clientes de Thriftties apprécient le style unique et abordable des pièces proposées, mais expriment le besoin d'un processus de commande plus clair. La majorité souhaitent pouvoir consulter les disponibilités en temps réel, voir les tailles et les photos en détail, et finaliser leur achat sans passer par les messages privés.
+
+La confiance et la transparence sont également des éléments clés : les acheteuses veulent être rassurées sur les délais de livraison, l'état des articles et le suivi de leur commande. Une interface simple, visuelle et accessible répondrait directement à ces attentes.</p>
+    </div>
+  </div>
+</section>
+
+<!-- 07 – STYLE GUIDE -->
+<section class="sec b" style="background: var(--bg3);">
+  <div class="wrap">
+    <div class="f" style="margin-bottom:2.5rem;">
+      <span class="lbl">07 – Identité Visuelle</span>
+      <h2 class="ttl">Style <em>Guide</em></h2>
+    </div>
+    <div class="f sg-img-wrap">
+      <img src="palette de couleur.png">
+    </div>
+  </div>
+</section>
+
+<!-- 08 – MAQUETTES FINALES -->
+<section class="sec c">
+  <div class="wrap">
+    <div class="f">
+      <span class="lbl">08 – Maquettes Finales</span>
+      <h2 class="ttl">L'interface <em>livrée</em></h2>
+      <p class="bdy">Les maquettes haute-fidélité de Thriftties – l'aboutissement d'un travail de conception centré sur une expérience d'achat simple, moderne et adaptée aux amatrices de mode seconde main.</p>
+    </div>
+    <div class="scr-wrap f">
+      <img src="design final.png">
+    </div>
+  </div>
+</section>
+
+<!-- 09 – DÉCISIONS -->
+<section class="sec a">
+  <div class="wrap">
+    <div class="tc">
+      <div class="f">
+        <span class="lbl">09 – Décisions de Design</span>
+        <h2 class="ttl">Les choix qui <em>comptent</em></h2>
+        <p class="bdy">5 décisions de design prises pour offrir aux clientes de Thriftties une expérience d'achat en ligne claire, agréable et qui reflète l'identité de la boutique.</p>
+      </div>
+      <div class="decs f d1">
+        <div class="dec"><div class="dn">01</div><div><div class="dt_">Identité visuelle forte et cohérente</div><div class="dd">Une palette de couleurs et une typographie soigneusement choisies pour refléter l'univers tendance et accessible de Thriftties.</div></div></div>
+        <div class="dec"><div class="dn">02</div><div><div class="dt_">Catalogue clair et visuel</div><div class="dd">Des fiches produits avec photos de qualité, tailles disponibles et descriptions précises pour faciliter le choix sans passer par les DMs.</div></div></div>
+        <div class="dec"><div class="dn">03</div><div><div class="dt_">Processus de commande simplifié</div><div class="dd">Un tunnel d'achat court et intuitif pour que les clientes puissent commander en quelques clics, sans friction ni confusion.</div></div></div>
+        <div class="dec"><div class="dn">04</div><div><div class="dt_">Design mobile-first</div><div class="dd">L'interface est pensée pour le téléphone, puisque la majorité des clientes découvrent Thriftties via Instagram et TikTok.</div></div></div>
+        <div class="dec"><div class="dn">05</div><div><div class="dt_">Transparence et confiance</div><div class="dd">Des informations claires sur les délais, les conditions de vente et le suivi de commande pour rassurer les acheteuses et fidéliser la clientèle.</div></div></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 10 – CONCLUSION -->
+<section class="sec b">
+  <div class="wrap">
+    <div class="f" style="margin-bottom:2.5rem;">
+      <span class="lbl">10 – Leçons & Rétrospective</span>
+      <h2 class="ttl">Ce que ce projet<br>m'a <em>appris</em></h2>
+    </div>
+    <div class="f learning-para">
+      <p>Créer le site web de Thriftties m'a appris que passer des réseaux sociaux à une boutique en ligne est bien plus qu'un changement de plateforme – c'est repenser entièrement l'expérience d'achat. J'ai dû me mettre à la place de mes clientes pour comprendre ce qui les freinait et ce qui les rassurerait.
+
+Ce projet m'a montré que la clarté est la priorité numéro un : une cliente ne doit jamais se demander comment commander, quelle taille choisir ou quand elle sera livrée. Chaque détail de l'interface doit répondre à une vraie question ou lever un vrai obstacle.
+
+Enfin, construire ce site depuis ma propre expérience de vendeuse m'a donné un avantage réel : je connais mes produits, mes clientes et ce qui fait la force de Thriftties. Ce projet n'est pas juste un exercice de design – c'est le prochain chapitre de ma boutique.</p>
+    </div>
+  </div>
+</section>
+
+<!-- CTA -->
+<section class="cta sec">
+  <div class="wrap">
+    <div class="ctai f">
+      <div>
+        <div class="ctal">Projet suivant</div>
+        <h2 class="ctat">Voir d'autres<br><em>case studies</em></h2>
+      </div>
+      <div class="btns">
+        <a href="index (12).html#projects" class="bp">Tous les projets →</a>
+        <a href="contact.html" class="bo">Me contacter</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer class="site-footer">
+  <div class="site-footer-inner">
+    <span class="site-footer-logo">Doha<span>.</span></span>
+    <span class="site-footer-copy">&copy; 2026 &mdash; UX/UI Designer &amp; Front-end Developer</span>
+    <span class="site-footer-place">Charleville-Mézières, FR</span>
+  </div>
+</footer>
+
+<script>
+  const els = document.querySelectorAll('.f');
+  const obs = new IntersectionObserver(entries => {
+    entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('v'); obs.unobserve(e.target); } });
+  }, { threshold: 0.07 });
+  els.forEach(el => obs.observe(el));
+</script>
+<script id="shared-nav-footer-script">
+  (() => {
+    const nav = document.getElementById('nav');
+    const toggle = document.getElementById('navToggle');
+    const menu = document.getElementById('mobileMenu');
+
+    if (nav) {
+      const setNavState = () => nav.classList.toggle('scrolled', window.scrollY > 50);
+      setNavState();
+      window.addEventListener('scroll', setNavState, { passive: true });
+    }
+
+    if (toggle && menu && !toggle.dataset.bound) {
+      toggle.dataset.bound = 'true';
+      toggle.addEventListener('click', () => menu.classList.toggle('open'));
+      menu.querySelectorAll('a').forEach(link => {
+        link.addEventListener('click', () => menu.classList.remove('open'));
+      });
+    }
+  })();
+</script>
+</body>
+</html>

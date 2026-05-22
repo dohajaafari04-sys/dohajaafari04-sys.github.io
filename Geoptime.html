@@ -1,0 +1,479 @@
+﻿<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Geoptime – Case Study · Doha Jaafari</title>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,700;0,900;1,400&family=DM+Sans:wght@300;400;500&family=Space+Mono&display=swap" rel="stylesheet">
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    :root {
+      --bg:#0a0a0a; --bg2:#0f0f0f; --bg3:#141414; --surf:#181818;
+      --brd:rgba(255,255,255,0.07); --brd-h:rgba(255,255,255,0.14);
+      --txt:#f0ede8; --muted:rgba(240,237,232,0.45); --dim:rgba(240,237,232,0.2);
+      --acc:#A6EB2E; --acc-dim:rgba(166,235,46,0.1); --acc-brd:rgba(166,235,46,0.22);
+      --mono:'Space Mono',monospace; --disp:'Playfair Display',serif; --body:'DM Sans',sans-serif;
+      --r:12px; --rl:20px;
+    }
+    html{scroll-behavior:smooth;}
+    body{font-family:var(--body);background:var(--bg);color:var(--txt);overflow-x:hidden;display:flex;flex-direction:column;align-items:center;}
+    a{color:inherit;text-decoration:none;}
+    img{max-width:100%;display:block;}
+    .wrap{max-width:980px;width:100%;margin:0 auto;padding:0 2.5rem;}
+    nav,.hero,.stats-bar,.sec,.cta-sec,footer{width:100vw;box-sizing:border-box;}
+
+    /* NAV */
+    nav{position:fixed;top:0;left:0;right:0;z-index:100;padding:1.2rem 2.5rem;display:flex;justify-content:space-between;align-items:center;background:rgba(10,10,10,0.92);backdrop-filter:blur(20px);border-bottom:1px solid var(--brd);}
+    .nlogo{font-family:var(--disp);font-size:1.25rem;font-weight:700;color:var(--txt);}
+    .nlogo span{color:var(--acc);}
+    .nlinks{display:flex;gap:2rem;list-style:none;}
+    .nlinks a{font-size:.78rem;color:var(--muted);transition:color .2s;}
+    .nlinks a:hover{color:var(--txt);}
+
+    /* HERO */
+    .hero{min-height:100vh;padding-top:5.5rem;padding-bottom:0;display:flex;flex-direction:column;justify-content:flex-end;background:var(--bg);position:relative;overflow:hidden;}
+    .h-glow{position:absolute;inset:0;pointer-events:none;background:radial-gradient(ellipse 55% 55% at 18% 70%,rgba(166,235,46,0.07) 0%,transparent 65%),radial-gradient(ellipse 38% 38% at 80% 30%,rgba(166,235,46,0.04) 0%,transparent 60%);}
+    .h-dots{position:absolute;inset:0;pointer-events:none;background-image:radial-gradient(rgba(255,255,255,0.03) 1px,transparent 1px);background-size:30px 30px;mask-image:radial-gradient(ellipse 80% 80% at 35% 55%,black 10%,transparent 80%);}
+    .h-inner{position:relative;z-index:2;padding-bottom:4rem;}
+    .h-back{display:inline-flex;align-items:center;gap:.5rem;font-family:var(--mono);font-size:.56rem;letter-spacing:.12em;text-transform:uppercase;color:var(--dim);margin-bottom:3rem;transition:color .2s;}
+    .h-back:hover{color:var(--acc);}
+    .h-back:hover svg{transform:translateX(-3px);}
+    .h-back svg{transition:transform .2s;}
+    .h-eye{font-family:var(--mono);font-size:.56rem;letter-spacing:.18em;color:var(--acc);text-transform:uppercase;margin-bottom:1.8rem;display:block;}
+    .h-title{font-family:var(--disp);font-size:clamp(4.5rem,14vw,11rem);font-weight:900;line-height:.85;letter-spacing:-.04em;color:var(--txt);margin-bottom:3.5rem;}
+    .h-title em{color:var(--acc);font-style:italic;}
+    .h-meta{display:flex;flex-wrap:wrap;gap:2.5rem;padding-top:2.5rem;border-top:1px solid var(--brd);}
+    .h-mi{display:flex;flex-direction:column;gap:.3rem;}
+    .h-ml{font-family:var(--mono);font-size:.48rem;letter-spacing:.14em;text-transform:uppercase;color:var(--dim);}
+    .h-mv{font-size:.8rem;color:var(--muted);}
+    .h-mockup{position:absolute;right:0;bottom:0;width:clamp(380px,48vw,720px);z-index:3;pointer-events:none;}
+    .h-mockup img{width:100%;height:auto;object-fit:contain;}
+
+    /* STATS */
+    .stats-bar{background:var(--surf);border-top:1px solid var(--brd);border-bottom:1px solid var(--brd);padding:2.5rem 0;}
+    .stats-g{display:grid;grid-template-columns:repeat(4,1fr);}
+    .stat{padding:0 2rem;border-right:1px solid var(--brd);text-align:center;}
+    .stat:last-child{border-right:none;}
+    .sn{font-family:var(--disp);font-size:2.5rem;font-weight:900;color:var(--acc);letter-spacing:-.03em;line-height:1;margin-bottom:.4rem;}
+    .sl{font-family:var(--mono);font-size:.48rem;letter-spacing:.1em;text-transform:uppercase;color:var(--dim);line-height:1.6;}
+
+    /* SECTIONS */
+    .sec{padding:6rem 0;border-bottom:1px solid var(--brd);}
+    .sec.a{background:var(--bg2);}
+    .sec.b{background:var(--bg3);}
+    .sec.c{background:#050505;}
+    .lbl{font-family:var(--mono);font-size:.52rem;letter-spacing:.18em;text-transform:uppercase;color:var(--acc);margin-bottom:.8rem;display:block;}
+    .ttl{font-family:var(--disp);font-size:clamp(1.8rem,4vw,2.8rem);font-weight:700;letter-spacing:-.02em;line-height:1.1;margin-bottom:1.2rem;color:var(--txt);}
+    .ttl em{color:var(--acc);font-style:italic;}
+    .bdy{font-size:.87rem;color:var(--muted);line-height:1.85;max-width:560px;}
+    .tc{display:grid;grid-template-columns:1fr 1fr;gap:5rem;align-items:start;}
+
+    /* OVERVIEW */
+    .ovg{display:grid;grid-template-columns:1fr 1fr;gap:1px;background:var(--brd);border:1px solid var(--brd);border-radius:var(--rl);overflow:hidden;margin-top:2.5rem;}
+    .ovc{background:var(--surf);padding:1.8rem;}
+    .ovc .ol{font-family:var(--mono);font-size:.48rem;letter-spacing:.14em;text-transform:uppercase;color:var(--dim);margin-bottom:.8rem;display:block;}
+    .ovc p{font-size:.83rem;color:var(--muted);line-height:1.75;}
+    .ovc .q{font-family:var(--disp);font-size:.98rem;font-style:italic;color:var(--txt);border-left:2px solid var(--acc);padding-left:1.2rem;line-height:1.65;}
+    .ovc.sp{grid-column:span 2;}
+
+    /* INSIGHTS */
+    .ins{margin-top:2.5rem;border:1px solid var(--brd);border-radius:var(--rl);overflow:hidden;}
+    .ir{background:var(--surf);padding:1.7rem 2rem;display:grid;grid-template-columns:2.5rem 1fr 2.2fr;gap:1.5rem;align-items:start;border-bottom:1px solid var(--brd);transition:background .2s;}
+    .ir:last-child{border-bottom:none;}
+    .ir:hover{background:var(--bg3);}
+    .in_{font-family:var(--disp);font-size:1.7rem;font-weight:900;color:var(--brd);letter-spacing:-.04em;line-height:1;}
+    .it{font-size:.82rem;font-weight:500;color:var(--txt);line-height:1.4;}
+    .ib{font-size:.74rem;color:var(--muted);line-height:1.75;}
+    .ii{margin-top:.5rem;font-family:var(--mono);font-size:.5rem;letter-spacing:.08em;color:var(--acc);}
+
+    /* IMAGE PLACEHOLDER */
+    .img-placeholder{width:100%;border:2px dashed var(--acc-brd);border-radius:var(--rl);background:var(--acc-dim);display:flex;flex-direction:column;align-items:center;justify-content:center;gap:.75rem;padding:4rem 2rem;transition:border-color .25s,background .25s;position:relative;overflow:hidden;}
+    .img-placeholder:hover{border-color:var(--acc);background:rgba(166,235,46,.18);}
+    .img-placeholder .ph-icon{font-size:2rem;opacity:.5;}
+    .img-placeholder .ph-label{font-family:var(--mono);font-size:.52rem;letter-spacing:.16em;text-transform:uppercase;color:var(--muted);text-align:center;line-height:1.8;}
+    .img-placeholder .ph-sub{font-size:.72rem;color:var(--dim);text-align:center;}
+    .img-placeholder.tall{min-height:480px;}
+    .img-placeholder.short{min-height:300px;}
+    .img-placeholder.wide{min-height:400px;}
+
+    /* LOGO GRID */
+    .logo-grid{display:grid;grid-template-columns:1fr 1fr;gap:1rem;margin-top:1.5rem;}
+    .logo-variant{border:1px solid var(--brd);border-radius:14px;overflow:hidden;display:flex;flex-direction:column;}
+    .lv-bg{flex:1;min-height:140px;display:flex;align-items:center;justify-content:center;position:relative;}
+    .lv-bg.dark{background:#080808;}
+    .lv-bg.light{background:#f0ede8;}
+    .lv-bg.green-bg{background:#1a3a00;}
+    .lv-bg.color-bg{background:var(--acc);}
+    .lv-bg .img-placeholder{border-radius:0;border:none;background:transparent;padding:1.5rem;min-height:140px;}
+    .lv-bg .img-placeholder:hover{background:transparent;}
+    .logo-variant .lv-label{padding:.6rem .8rem;font-family:var(--mono);font-size:.44rem;letter-spacing:.1em;text-transform:uppercase;color:var(--dim);border-top:1px solid var(--brd);background:var(--surf);}
+
+    /* MOOD BOARD */
+    .mood-grid{display:grid;grid-template-columns:repeat(3,1fr);grid-template-rows:220px 220px;gap:.75rem;margin-top:2.5rem;}
+    .mood-cell{border-radius:14px;overflow:hidden;}
+    .mood-cell.rowspan{grid-row:span 2;}
+    .mood-cell .img-placeholder{height:100%;min-height:unset;border-radius:14px;padding:1.5rem;}
+
+    /* WIREFRAMES */
+    .wf-phones{display:grid;grid-template-columns:repeat(3,1fr);gap:1.5rem;}
+    .wf-phone-slot{aspect-ratio:9/18;border-radius:24px;overflow:hidden;}
+    .wf-phone-slot .img-placeholder{height:100%;min-height:unset;border-radius:24px;padding:1rem;}
+
+    /* MOCKUPS */
+    .mockup-showcase{display:grid;grid-template-columns:1.6fr 1fr 1fr;gap:1.5rem;align-items:end;margin-top:2.5rem;}
+    .main-slot{aspect-ratio:9/17;border-radius:28px;overflow:hidden;}
+    .side-slot{aspect-ratio:9/19;border-radius:24px;overflow:hidden;}
+    .main-slot .img-placeholder,.side-slot .img-placeholder{height:100%;min-height:unset;padding:1rem;border-radius:inherit;}
+    .mockup-row2{display:grid;grid-template-columns:1fr 1fr;gap:1.5rem;margin-top:1.5rem;}
+    .row2-slot{aspect-ratio:16/9;border-radius:20px;overflow:hidden;}
+    .row2-slot .img-placeholder{height:100%;min-height:unset;border-radius:20px;padding:1rem;}
+
+    /* LEARNING */
+    .learning-para{max-width:640px;border-left:2px solid var(--acc);padding-left:2rem;}
+    .learning-para p{font-size:.96rem;color:var(--muted);line-height:2;font-style:italic;}
+
+    /* CTA */
+    .cta-sec{background:var(--bg2);border-top:1px solid var(--brd);padding:5rem 0;}
+    .ctai{display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:2rem;}
+    .ctal{font-family:var(--mono);font-size:.52rem;letter-spacing:.18em;text-transform:uppercase;color:var(--acc);margin-bottom:.8rem;}
+    .ctat{font-family:var(--disp);font-size:clamp(1.6rem,3.5vw,2.4rem);font-weight:700;color:var(--txt);}
+    .ctat em{color:var(--acc);font-style:italic;}
+    .btns{display:flex;gap:1rem;flex-wrap:wrap;align-items:center;}
+    .bp{background:var(--acc);color:#0a0a0a;font-weight:700;font-size:.82rem;padding:.85rem 2rem;border-radius:100px;transition:opacity .2s,transform .2s;}
+    .bp:hover{opacity:.85;transform:translateY(-2px);}
+    .bo{border:1px solid var(--brd-h);color:var(--muted);font-size:.82rem;padding:.85rem 2rem;border-radius:100px;transition:border-color .2s,color .2s;}
+    .bo:hover{border-color:var(--acc);color:var(--acc);}
+
+    /* FOOTER */
+    footer{width:100vw;background:var(--surf);border-top:1px solid var(--brd);padding:3.5rem 2.5rem;}
+    .footer-inner{max-width:980px;margin:0 auto;display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:1.5rem;}
+    .footer-logo{font-family:var(--disp);font-size:1.5rem;font-weight:700;color:var(--txt);}
+    .footer-logo span{color:var(--acc);}
+    .footer-right{display:flex;flex-direction:column;gap:.4rem;align-items:flex-end;}
+    .footer-copy,.footer-made{font-family:var(--mono);font-size:.48rem;letter-spacing:.1em;text-transform:uppercase;color:var(--dim);}
+
+    /* FADE IN */
+    .f{opacity:0;transform:translateY(22px);transition:opacity .7s ease,transform .7s ease;}
+    .f.v{opacity:1;transform:translateY(0);}
+
+    /* RESPONSIVE */
+    @media(max-width:860px){
+      .tc{grid-template-columns:1fr;gap:3rem;}
+      .ovg{grid-template-columns:1fr;} .ovc.sp{grid-column:span 1;}
+      .stats-g{grid-template-columns:1fr 1fr;}
+      .logo-grid{grid-template-columns:1fr;}
+      .mood-grid{grid-template-columns:1fr 1fr;grid-template-rows:auto;}
+      .mood-cell.rowspan{grid-row:auto;}
+      .wf-phones{grid-template-columns:1fr 1fr;}
+      .mockup-showcase{grid-template-columns:1fr 1fr;}
+      .main-slot{grid-column:span 2;}
+      .h-mockup{display:none;}
+      .footer-right{align-items:flex-start;}
+    }
+    @media(max-width:560px){
+      .wf-phones{grid-template-columns:1fr;}
+      .mockup-showcase{grid-template-columns:1fr;}
+      .main-slot{grid-column:auto;}
+      .mockup-row2{grid-template-columns:1fr;}
+    }
+  </style>
+  <style id="shared-nav-footer-style">
+    .site-nav {
+      position: fixed; top: 0; left: 0; right: 0; z-index: 1000;
+      padding: 1.2rem 3rem; display: flex; justify-content: space-between;
+      align-items: center; background: rgba(10, 10, 10, 0.92);
+      backdrop-filter: blur(20px); border-bottom: 1px solid rgba(255,255,255,0.07);
+      box-sizing: border-box; transition: padding .3s ease, background .3s ease;
+    }
+    .site-nav.scrolled { padding: .9rem 3rem; background: rgba(10,10,10,0.96); }
+    .site-nav-logo { font-family: var(--disp,'Playfair Display',serif); font-size: 1.3rem; font-weight: 700; color: var(--txt,#f0ede8); text-decoration: none; }
+    .site-nav-logo span { color: var(--acc,#A6EB2E); }
+    .site-nav-links { list-style: none; display: flex; gap: 2.2rem; align-items: center; margin: 0; padding: 0; }
+    .site-nav-links a { font-family: var(--mono,'Space Mono',monospace); font-size: .58rem; letter-spacing: .12em; text-transform: uppercase; color: var(--muted,rgba(240,237,232,0.45)); text-decoration: none; position: relative; transition: color .2s ease; }
+    .site-nav-links a::after { content: ''; position: absolute; left: 0; bottom: -5px; width: 0; height: 1px; background: var(--acc,#A6EB2E); transition: width .25s ease; }
+    .site-nav-links a:hover, .site-nav-links a.active { color: var(--txt,#f0ede8); }
+    .site-nav-links a:hover::after, .site-nav-links a.active::after { width: 100%; }
+    .site-nav-toggle { display: none; flex-direction: column; gap: 5px; width: 34px; height: 34px; align-items: center; justify-content: center; border: 1px solid rgba(255,255,255,0.1); border-radius: 8px; background: transparent; cursor: pointer; }
+    .site-nav-toggle span { display: block; width: 18px; height: 1px; background: var(--txt,#f0ede8); transition: transform .25s ease; }
+    .site-mobile-menu { position: fixed; inset: 0; z-index: 999; background: rgba(10,10,10,.97); display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 1.8rem; transform: translateX(100%); transition: transform .35s cubic-bezier(.22,1,.36,1); }
+    .site-mobile-menu.open { transform: none; }
+    .site-mobile-menu a { font-family: var(--disp,'Playfair Display',serif); font-size: clamp(1.8rem,9vw,3rem); font-style: italic; color: var(--muted,rgba(240,237,232,0.45)); text-decoration: none; transition: color .2s ease; }
+    .site-mobile-menu a:hover { color: var(--txt,#f0ede8); }
+    .site-footer { width: 100%; box-sizing: border-box; background: var(--bg,#0a0a0a); border-top: 1px solid rgba(255,255,255,0.07); padding: 2.2rem 3rem; }
+    .site-footer-inner { max-width: 1100px; margin: 0 auto; display: flex; align-items: center; justify-content: space-between; gap: 1.5rem; }
+    .site-footer-logo { font-family: var(--disp,'Playfair Display',serif); font-size: 1.25rem; font-weight: 700; color: var(--txt,#f0ede8); }
+    .site-footer-logo span { color: var(--acc,#A6EB2E); }
+    .site-footer-copy, .site-footer-place { font-family: var(--mono,'Space Mono',monospace); font-size: .54rem; letter-spacing: .1em; text-transform: uppercase; color: var(--dim,rgba(240,237,232,0.2)); }
+    @media (max-width: 900px) {
+      .site-nav { padding: 1rem 1.4rem; }
+      .site-nav.scrolled { padding: .85rem 1.4rem; }
+      .site-nav-links { display: none; }
+      .site-nav-toggle { display: flex; }
+      .site-footer { padding: 2rem 1.4rem; }
+      .site-footer-inner { flex-direction: column; text-align: center; }
+    }
+  </style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav class="site-nav" id="nav">
+  <a href="index.html" class="site-nav-logo">Doha<span>.</span></a>
+  <ul class="site-nav-links">
+    <li><a href="index.html">Accueil</a></li>
+    <li><a href="index.html#projects">Projets</a></li>
+    <li><a href="index.html#skills">Compétences</a></li>
+    <li><a href="index.html#contact">Contact</a></li>
+  </ul>
+  <button class="site-nav-toggle" id="navToggle" aria-label="Ouvrir le menu" type="button">
+    <span></span><span></span>
+  </button>
+</nav>
+
+<!-- MOBILE MENU -->
+<div class="site-mobile-menu" id="mobileMenu">
+  <a href="index.html" class="mobile-link">Accueil</a>
+  <a href="index.html#projects" class="mobile-link">Projets</a>
+  <a href="index.html#skills" class="mobile-link">Compétences</a>
+  <a href="index.html#contact" class="mobile-link">Contact</a>
+</div>
+
+<!-- ══ HERO ══ -->
+<section class="hero">
+  <div class="h-glow"></div>
+  <div class="h-dots"></div>
+
+  <div class="h-mockup" aria-hidden="true">
+    <img src="geoptime.png" alt="Maquettes Geoptime" />
+  </div>
+
+  <div class="h-inner wrap">
+    <a href="index.html" class="h-back">
+      <svg width="12" height="12" viewBox="0 0 14 14" fill="none"><path d="M9 2L4 7l5 5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+      Retour aux projets
+    </a>
+    <span class="h-eye">UX/UI Design · Application mobile · 2024</span>
+    <h1 class="h-title f">Geo<em>ptime</em></h1>
+    <div class="h-meta f">
+      <div class="h-mi"><span class="h-ml">Rôle</span><span class="h-mv">UX/UI Designer</span></div>
+      <div class="h-mi"><span class="h-ml">Durée</span><span class="h-mv">6 semaines</span></div>
+      <div class="h-mi"><span class="h-ml">Outils</span><span class="h-mv">Figma · FigJam · Maze</span></div>
+      <div class="h-mi"><span class="h-ml">Contexte</span><span class="h-mv">Projet étudiant</span></div>
+      <div class="h-mi"><span class="h-ml">Plateforme</span><span class="h-mv">iOS &amp; Android</span></div>
+    </div>
+  </div>
+</section>
+
+<!-- STATS -->
+<section class="stats-bar">
+  <div class="wrap">
+    <div class="stats-g">
+      <div class="stat"><div class="sn">8</div><div class="sl">entretiens<br>utilisateurs</div></div>
+      <div class="stat"><div class="sn">3</div><div class="sl">itérations<br>de design</div></div>
+      <div class="stat"><div class="sn">24</div><div class="sl">écrans<br>livrés</div></div>
+      <div class="stat"><div class="sn">−38%</div><div class="sl">temps<br>de trajet</div></div>
+    </div>
+  </div>
+</section>
+
+<!-- 01 — PRÉSENTATION -->
+<section class="sec a">
+  <div class="wrap">
+    <div class="tc">
+      <div class="f">
+        <span class="lbl">01 — Présentation du projet</span>
+        <h2 class="ttl">Optimiser chaque<br><em>trajet.</em></h2>
+        <p class="bdy">Geoptime est né d'une idée simple : deux étudiants en informatique, fatigués de perdre du temps à planifier leurs déplacements, décident de créer l'outil qu'ils n'arrivent pas à trouver.</p>
+        <br>
+        <p class="bdy">L'application aide tout type d'utilisateur — étudiant, livreur, commercial, artisan, ou simple particulier — à planifier et optimiser ses trajets multi-stops en quelques secondes, que ce soit pour une tournée professionnelle ou pour regrouper ses courses du quotidien.</p>
+        <br>
+        <p class="bdy">Mon rôle : concevoir l'expérience utilisateur et l'identité visuelle complète, du logo aux maquettes haute-fidélité, pour donner vie à leur vision.</p>
+      </div>
+      <div class="f">
+        <div class="ovg">
+          <div class="ovc">
+            <span class="ol">Public cible</span>
+            <p>Tous types d'utilisateurs : étudiants, livreurs, artisans, particuliers</p>
+          </div>
+          <div class="ovc">
+            <span class="ol">Plateforme</span>
+            <p>Application mobile iOS &amp; Android</p>
+          </div>
+          <div class="ovc">
+            <span class="ol">Fondateurs</span>
+            <p>2 étudiants en informatique avec une vision claire et un besoin concret</p>
+          </div>
+          <div class="ovc">
+            <span class="ol">Objectif</span>
+            <p>Réduire le temps de planification de 40 % en automatisant l'optimisation</p>
+          </div>
+          <div class="ovc sp">
+            <p class="q">« On passait plus de temps à organiser nos trajets qu'à les faire. On s'est dit : on va régler ce problème une fois pour toutes. »</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 02 — PROBLÉMATIQUE -->
+<section class="sec b">
+  <div class="wrap">
+    <div class="f" style="margin-bottom:3rem">
+      <span class="lbl">02 — Problématique</span>
+      <h2 class="ttl">Pourquoi planifier<br>un trajet est si <em>frustrant ?</em></h2>
+      <p class="bdy">Avant de dessiner un seul écran, des entretiens ont été menés avec des profils variés. Les mêmes frictions reviennent, peu importe le contexte d'utilisation.</p>
+    </div>
+    <div class="ins f">
+      <div class="ir">
+        <div class="in_">01</div>
+        <div class="it">La planification manuelle est chronophage<div class="ii">Pain point · 8/8 utilisateurs</div></div>
+        <div class="ib">Organiser plusieurs arrêts à la main — sur une carte, dans des notes ou par intuition — prend en moyenne 20 à 40 minutes. Un temps que personne n'a envie de perdre avant même de bouger.</div>
+      </div>
+      <div class="ir">
+        <div class="in_">02</div>
+        <div class="it">Les GPS classiques ne gèrent pas les multi-stops<div class="ii">Frustration forte · 7/8 utilisateurs</div></div>
+        <div class="ib">Google Maps et Waze permettent quelques arrêts mais n'optimisent pas l'ordre. L'utilisateur doit lui-même deviner le meilleur enchaînement — et se trompe souvent.</div>
+      </div>
+      <div class="ir">
+        <div class="in_">03</div>
+        <div class="it">Aucune adaptation au contexte réel<div class="ii">Besoin latent · 6/8 utilisateurs</div></div>
+        <div class="ib">Un arrêt fermé, un bouchon inattendu, un changement de plan — les outils existants ne recalculent pas automatiquement. L'utilisateur repart de zéro à chaque imprévu.</div>
+      </div>
+      <div class="ir">
+        <div class="in_">04</div>
+        <div class="it">Pas de mémoire des habitudes<div class="ii">Opportunité · 5/8 utilisateurs</div></div>
+        <div class="ib">Chaque jour, l'utilisateur recommence la même planification. Aucun outil ne retient les adresses fréquentes, les créneaux habituels ou les préférences de route.</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 03 — IDENTITÉ VISUELLE / LOGO -->
+<section class="sec a">
+  <div class="wrap">
+    <div class="tc">
+      <div class="f">
+        <span class="lbl">03 — Identité visuelle</span>
+        <h2 class="ttl">Un logo qui<br><em>pointe juste.</em></h2>
+        <p class="bdy">Le logo Geoptime traduit visuellement la promesse du produit : précision géographique et optimisation du temps. Le marqueur de localisation stylisé, associé à une typographie serif bold, crée une identité à la fois moderne et mémorable.</p>
+        <br>
+        <p class="bdy">La couleur <strong style="color:var(--acc);font-weight:600">#A6EB2E</strong> — un vert citron vif — a été choisie pour son énergie, sa visibilité sur fond sombre, et son association intuitive à la notion de trajet optimisé et de mouvement.</p>
+      </div>
+      <div class="f">
+        <img src="brand identity.png" alt="Identité visuelle Geoptime" />
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 05 — DESIGN SYSTÈME -->
+<section class="sec a">
+  <div class="wrap">
+    <div class="f">
+      <span class="lbl">05 — Design système</span>
+      <h2 class="ttl">Les fondations<br><em>visuelles</em></h2>
+      <p class="bdy">Un système de design cohérent — couleurs, typographie, composants et icônes — pensé pour être lisible en toutes conditions, même en extérieur ou depuis un véhicule en mouvement.</p>
+    </div>
+    <img src="guide style.png" alt="Guide de style Geoptime" />
+  </div>
+</section>
+
+<!-- 06 — WIREFRAMES -->
+<section class="sec b">
+  <div class="wrap">
+    <div class="tc">
+      <div class="f">
+        <span class="lbl">06 — Wireframes</span>
+        <h2 class="ttl">Structure avant<br><em>apparence</em></h2>
+        <p class="bdy">Les wireframes low-fidelity ont permis de tester plusieurs architectures d'information avec les utilisateurs avant de valider la version finale.</p>
+        <br>
+        <p class="bdy">Chaque écran a été conçu pour réduire au maximum le nombre de taps : ajouter un stop en 2 actions, lancer l'itinéraire en 1 touche.</p>
+      </div>
+      <div class="f">
+        <img src="Wireframe geo.png" alt="Wireframes Geoptime" />
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 07 — MAQUETTES FINALES -->
+<section class="sec c">
+  <div class="wrap">
+    <div class="f" style="margin-bottom:3rem">
+      <span class="lbl">07 — Maquettes finales</span>
+      <h2 class="ttl">L'interface <em>livrée</em></h2>
+      <p class="bdy">Les maquettes haute-fidélité — l'aboutissement de 6 semaines de recherche, d'itérations et de tests avec des utilisateurs réels. Chaque écran validé avant livraison.</p>
+    </div>
+    <img src="maquette geo.png" alt="Maquettes finales Geoptime" />
+  </div>
+</section>
+
+<!-- 08 — CE QUE J'AI APPRIS -->
+<section class="sec b">
+  <div class="wrap">
+    <div class="f" style="margin-bottom:2.5rem">
+      <span class="lbl">08 — Leçons &amp; Rétrospective</span>
+      <h2 class="ttl">Ce que ce projet<br>m'a <em>appris</em></h2>
+    </div>
+    <div class="learning-para f">
+      <p>Travailler sur Geoptime m'a appris que concevoir pour tous les types d'utilisateurs ne veut pas dire concevoir pour personne. La contrainte de l'universalité m'a forcée à aller chercher le dénominateur commun : la rapidité, la simplicité et la fiabilité. J'ai compris que collaborer avec des développeurs dès la phase de wireframing change radicalement la qualité du produit final — leurs contraintes techniques ont affiné mes décisions de design plutôt que de les limiter. J'ai aussi appris que la confiance des utilisateurs se gagne dans les détails : un feedback visuel immédiat après chaque action, un message d'erreur clair, une animation fluide — ce sont ces micro-moments qui font la différence entre une app qu'on réinstalle et une app qu'on garde. Geoptime m'a donné le goût de concevoir des produits qui résolvent de vrais problèmes, avec de vraies personnes.</p>
+    </div>
+  </div>
+</section>
+
+<!-- CTA -->
+<section class="cta-sec">
+  <div class="wrap">
+    <div class="ctai f">
+      <div>
+        <div class="ctal">Projet suivant</div>
+        <h2 class="ctat">Voir d'autres<br><em>case studies</em></h2>
+      </div>
+      <div class="btns">
+        <a href="index.html#projects" class="bp">Tous les projets →</a>
+        <a href="index.html" class="bo">Me contacter</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer class="site-footer">
+  <div class="site-footer-inner">
+    <span class="site-footer-logo">Doha<span>.</span></span>
+    <span class="site-footer-copy">&copy; 2026 &mdash; UX/UI Designer &amp; Front-end Developer</span>
+    <span class="site-footer-place">Charleville-Mézières, FR</span>
+  </div>
+</footer>
+
+<script>
+  const els = document.querySelectorAll('.f');
+  const obs = new IntersectionObserver(entries => {
+    entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('v'); obs.unobserve(e.target); } });
+  }, { threshold: 0.07 });
+  els.forEach(el => obs.observe(el));
+</script>
+<script id="shared-nav-footer-script">
+  (() => {
+    const nav = document.getElementById('nav');
+    const toggle = document.getElementById('navToggle');
+    const menu = document.getElementById('mobileMenu');
+
+    if (nav) {
+      const setNavState = () => nav.classList.toggle('scrolled', window.scrollY > 50);
+      setNavState();
+      window.addEventListener('scroll', setNavState, { passive: true });
+    }
+
+    if (toggle && menu && !toggle.dataset.bound) {
+      toggle.dataset.bound = 'true';
+      toggle.addEventListener('click', () => menu.classList.toggle('open'));
+      menu.querySelectorAll('a').forEach(link => {
+        link.addEventListener('click', () => menu.classList.remove('open'));
+      });
+    }
+  })();
+</script>
+</body>
+</html>
